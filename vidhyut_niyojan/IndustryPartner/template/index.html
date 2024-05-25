@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content %}
+			<!-- start page content -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-bar">
+						<div class="page-title-breadcrumb">
+							<div class=" pull-left">
+								<div class="page-title">Dashboard</div>
+							</div>
+							<!-- <ol class="breadcrumb page-breadcrumb pull-right">
+								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+										href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+								</li>
+								<li class="active">Dashboard</li>
+							</ol> -->
+						</div>
+					</div>
+					{%for message in messages %}
+					{%if "itag" in message.tags %}
+					<div class="message">
+						<center><p style = "color:green"> {{message}} </p></center>   {# show gst error message #}
+					</div>
+					{%endif%}
+					{%endfor%}
+					<!-- start widget -->
+					<div class="row ">
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Job_Request' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Requested Applications</h4>
+											</div>
+											<h3 class="mt-1 mb-3 info-box-title col-green">{{candidd}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-purple" style="width: 45%"></div>
+											</div>
+											<br>
+											
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline7"><canvas
+													style="display: inline-block; width: 267px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+								</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Job_accept' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Accepted Applications</h4>
+											</div>
+											<h3 class="mt-1 mb-3 info-box-title col-green">{{accept_count}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-red" style="width: 45%"></div>
+											</div>
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline12"><canvas
+													style="display: inline-block; width: 367px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Job_reject' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Rejected Applications</h4>
+											</div>
+											<h3 class="mt-1 mb-3 info-box-title col-green">{{reject_count}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-green" style="width: 45%"></div>
+											</div>
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline9"><canvas
+													style="display: inline-block; width: 167px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Hired_candidate' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Completed Applications</h4>
+											</div>
+											<h3 class="mt-1 mb-3 info-box-title col-green">{{hired_count}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-orange" style="width: 45%"></div>
+											</div>
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline16" class="text-center"><canvas
+													style="display: inline-block; width: 215px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+								</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Decline_candidate' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Decline Applications</h4>
+											</div>
+											<h3 class="mt-1 mb-3 info-box-title col-green">{{decline_count}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-orange" style="width: 45%"></div>
+											</div>
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline16" class="text-center"><canvas
+													style="display: inline-block; width: 215px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-6">
+							<div class="card comp-card">
+								<div class="card-body">
+									<a href="{% url 'IndustryPartner:Total_Job_post' %}">
+									<div class="row align-items-center">
+										<div class="col">
+											<div class="col mt-0">
+												<h4 class="info-box-title">Total Job Posted</h4>
+											</div>
+												<h3 class="mt-1 mb-3 info-box-title col-green">{{all_job}}</h3>
+											<div class="progress">
+												<div class="progress-bar l-bg-orange" style="width: 45%"></div>
+											</div>
+										</div>
+										<!-- <div class="col-auto">
+											<div id="sparkline16" class="text-center"><canvas
+													style="display: inline-block; width: 215px; height: 70px; vertical-align: top;"></canvas>
+											</div>
+										</div> -->
+									</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="card card-box">
+								<div class="card-body ">
+									<div class="table-wrap">
+										<div class="table-responsive">
+											<table class="table display product-overview mb-30">
+												<thead>
+													<tr>
+														<th>Job Name </th>
+														<th>Job Type</th>
+														<th>Job Salary</th>
+														<th>Number Of Requirements</th>
+														<th>Experience</th>
+														<th>Qualification</th>
+												</thead>
+												<tbody>
+													{% for job_item in industry_jobpost %}
+													<tr>
+														<td>{{job_item.Job_Name}}</td>
+														<td>{{job_item.Job_type}}</td>
+														<td>{{job_item.Job_salary}}</td>
+														<td>{{job_item.Number_Of_Requirements}}</td>
+														<td>{{job_item.Experience}}</td>
+														<td>{{job_item.Qualification}}</td>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endblock %}

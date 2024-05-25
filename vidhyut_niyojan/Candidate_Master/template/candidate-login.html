@@ -1,0 +1,273 @@
+<!doctype html>
+{% load static %}
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover"
+    data-sidebar-image="none">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Pssc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <!--Swiper slider css-->
+    <link href="{% static 'assets/libs/swiper/swiper-bundle.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Layout config Js -->
+    <script src="{% static 'assets/js/layout.js' %}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{% static 'assets/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+    <!-- Begin page -->
+    <div class="layout-wrapper landing">
+        <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar" style="background-color: #fff;">
+            <!-- <div class="container"> -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark " alt="logo dark" height="70" style="margin-left: 100%;">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                </a>
+                <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="/"> Home</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{%url 'IndustryPartner:industry_login' %}"> Industry Partner</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{%url 'TrainingPartner:training_login' %}"> Training partner </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{% url 'Candidate_Master:candidate_login' %}"> Candidate </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="/"> Job Fair </a>
+                        </li>
+
+                        <a class="navbar-brand" href="index.html">
+                            <img src="{% static 'assets/images/pssc/14.png' %}" class="card-logo card-logo-dark" alt="logo dark" height="70" style="padding-left: 50px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                        &nbsp;
+                        <a class="navbar-brand ml-5" href="index.html">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-dark fs-15" alt="logo dark" height="70" style="padding-left: 30px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                    </ul>
+
+                </div>
+
+          
+        </nav>
+        <!-- end navbar -->
+        <section class="section pb-0 hero-section" id="hero">
+            <div class="bg-overlay bg-overlay-pattern"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-sm-10">
+                        <div class="text-center mt-lg-5 pt-5">
+                            <br>
+                            <h1 class="mt-5 mb-5 "> Candidate </h1>
+                            <br>
+                        </div>
+
+                    </div>
+                    <!-- end hero section -->
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- signin -->
+        <div class="row justify-content-center">
+
+
+            <div class="col-md-4 mt-5 mt-4">
+                <img class="" src="{% static 'assets/images/candid.png' %}" style="width:100% ;">
+            </div>
+
+
+            <div class="col-md-6 col-lg-6 col-xl-4 mt-5">
+                <div class="card mt-4">
+
+                    <div class="card-body p-4">
+                        <div class="text-center mt-2">
+                            <h2 class="text-primary"> Candidate Login </h2>
+
+                        </div>
+                        <div class="p-2 mt-4">
+                            <form method="POST" class="post-form" action="/cm/" enctype="multipart/form">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" name="Contact_Person_Email" placeholder="Enter username" required>
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label" for="password-input">Password</label>
+                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                        <input type="password" class="form-control pe-5" placeholder="Enter password" name="Password" id="myInput" required>
+                                       <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"  type="button" id="password-addon" onclick="myFunction()"><i
+                                                   class="ri-eye-fill align-middle"></i></button>
+                                    </div>
+                                </div>
+
+
+
+                                <script>
+                                    function myFunction() {
+                                    var x = document.getElementById("myInput");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                    }
+                                </script>
+
+                                {%for message in messages %}
+                                {%if "log" in message.tags %}
+                                    <p style = "color:red"> {{message}} </p>   {# show gst error message #}
+                                {%endif%}
+                                {%endfor%}
+                                <div class="col-md-4 offset-4">
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary p w-100" type="submit">Sign In</button>
+                                        <!-- <h5 class="fs-13 mb-4 title">Don't Have and account ?? Sing Up</h5> -->
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <center>
+                                        <h4 class="fs-13 mb-4 ">Don't Have Any Account ?<a
+                                                href="{%url 'Candidate_Master:Candidate_register'%}"> Sing Up </a></h4>
+                                    </center>
+
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        &nbsp;&nbsp;
+        <footer class="custom-footer bg-dark py-5 position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <div>
+                                <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark" alt="logo dark"
+                                     style="background-color: aliceblue; padding: 10px; border-radius: 20px;" height="100">
+                            </div>
+                            <div class="mt-4 fs-13">
+                                <!--              <p>IPFIndeer customer dashbord</p> -->
+                                <p class="ff-secondary">Vidyut Rozgar Portal contains the industry partners and training partners for the candidates. 
+                                    It is working on providing skilled candidates and employment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 ms-lg-auto">
+                        <div class="row">
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Company</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'Home:PSSC_HOME' %}">Home</a></li>
+                                        <li><a href="#">About Us </a></li>
+                                        <li><a href="{% url 'Home:contact_us' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Partnership</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'IndustryPartner:industry_login' %}">Industry Partner</a></li>
+                                        <li><a href="{% url 'TrainingPartner:training_login' %}">Training Partner</a></li>
+                                        
+                                        <li><a href="{% url 'Candidate_Master:candidate_login' %}">Candidate Login</a></li>
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Support</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+
+                                        <li><a href="pages-faqs.html">Email : mailto:test@gmail.com</a></li>
+                                        <li><a href="pages-faqs.html">Mobile No. : 876543217</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row text-center text-sm-start align-items-center mt-5">
+                    <div class="col-sm-7 offset-4">
+                          <p>   © Copyright - 2022 All Rights Reserved by Power Sector Skill Council India
+                               
+                          </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+
+    </div>
+    <!-- end layout wrapper -->
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'assets/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+
+    <!--Swiper slider js-->
+    <script src="{% static 'assets/libs/swiper/swiper-bundle.min.js' %}"></script>
+
+    <!-- landing init -->
+    <script src="{% static 'assets/js/pages/landing.init.js' %}"></script>
+</body>
+
+
+
+
+</html>
+
+</body>

@@ -1,0 +1,149 @@
+{% extends 'trainig_header.html' %}{% load static %} {% block content %}
+
+			<!-- end sidebar menu -->
+			<!-- start page content -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-bar">
+						<div class="page-title-breadcrumb">
+							<div class=" pull-left">
+								<div class="page-title">Bulk Upload</div>
+							</div>
+							<ol class="breadcrumb page-breadcrumb pull-right">
+								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+										href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+								</li>
+								
+								<li class="active">Bulk Upload</li>
+							</ol>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-sm-Offset-2">
+							<form class="form-container" action="/Tp/bulkupload/" method="post" enctype='multipart/form-data'>
+								{% csrf_token %}
+							<div class="card-box">
+								
+								<div class="card-body row">
+									
+									<div class="col-lg-12 p-t-20">
+										<div class="row">
+										<div class="col-md-4">
+											
+											<input type="file" id="fileUpload"  name="bulk_upload_file" />
+										</div>
+
+										<div class="col-md-4">
+											<select class="form-select" name="Training_Center_Id">
+												{% for val in get_center %}
+												<option value="{{val.id}}">
+														{{val.Training_Center_Name}}
+												</option>
+                                				{% endfor %}
+											</select>
+										</div>
+										<div class="col-md-4" >
+											<button class="btn btn-primary" style="float: right;" type="submit">Submit</button>
+										</div>
+									</div>
+									</div>
+								
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+					<div class="card-box">
+						<div class="col-md-12">
+							<table class="table table-nowrap mb-0">
+								<thead>
+									<tr>
+										<th scope="col">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value=""
+													id="activetableCheck">
+												<label class="form-check-label" for="activetableCheck"></label>
+											</div>
+										</th>
+										<!-- <th scope="col">Order ID</th> -->
+										<th scope="col">Training Center Name</th>
+										<th scope="col">Files</th>
+										<th scope="col">Total rows</th>
+										<th scope="col">Skip Rows</th>
+										<th scope="col">Success Rows</th>
+										<!-- <th scope="col">Download</th> -->
+										<th scope="col">Action</th>
+	
+									</tr>
+								</thead>
+								<tbody>
+									{% for val in data %}
+									<tr>
+										<th scope="row">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value=""
+													id="activetableCheck01" checked>
+												<label class="form-check-label" for="activetableCheck01"></label>
+											</div>
+										</th>
+										<!-- <td>#541254265</td> -->
+	
+										<td>{{val.Training_Center_Id.Training_Center_Name}}</td>
+										<td>{{val.bulk_upload_file}}</td>
+										<td>{{val.TotalRecord}}</td>
+										<td>{{val.TotalSkip}}</td>
+										<td>{{val.TotalSuccess}}</td>
+										<!-- <td><a href="{% static 'csv/' %}{{val.bulk_upload_file}}"><i
+													class="ri-download-2-line"></i> &nbsp; Download</a></td> -->
+										<td><a href="/Tp/delete_bulk/{{val.id}}" class="link-danger"><i
+													class="ri-delete-bin-5-line"></i> &nbsp; Delete</a></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<hr>
+
+					<div class="card-box">
+						<div class="col-md-12">
+							<table class="table table-nowrap mb-0">
+								<thead>
+									<tr>
+		
+										<h4 style="font-size: 14px;font-weight: 600;color:black; padding: 10px">Download Sample
+											Here</h4>
+		
+										<th scope="col">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="" id="activetableCheck">
+												<label class="form-check-label" for="activetableCheck"></label>
+											</div>
+										</th>
+		
+										<th scope="col">Files</th>
+		
+										<th scope="col">Download</th>
+		
+									</tr>
+								<tbody>
+									<tr>
+										<td></td>
+										<td>Data</td>
+										<td><a href="{% static 'demo.csv' %}"><i class="ri-download-2-line"></i> &nbsp;
+												Download</a></td>
+									</tr>
+								</tbody>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end page content -->
+			<!-- start chat sidebar -->
+			
+			<!-- end chat sidebar -->
+		</div>
+		
+{% endblock %}

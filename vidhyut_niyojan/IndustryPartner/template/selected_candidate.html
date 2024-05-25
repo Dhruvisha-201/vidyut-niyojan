@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        
+                        <div class="page-title">{{all_job.Job_Name}}</div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- start new student list -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <br>
+                      
+                        <br>
+                        {% for message in messages %}
+                        {%if "jobpostdeleted" in message.tags %}
+                            <div class="message">
+                                <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                <a href="#" class="del-msg">&times;</a>
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        
+                        <div class="card-body ">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display product-overview
+                                        mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <th>FirstName</th>
+                                                <th>LastName</th>
+                                                <th>Gender</th>
+                                                <th>Candidate_Email</th>
+                                                <th>Phone_no</th>
+                                                <th>Qualification</th>
+                                                <th>Action</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for x in all_candidate %}
+                                            <tr>
+                                                <td>{{x.Candidate_Id.FirstName}}</td>
+                                                <td>{{x.Candidate_Id.LastName}}</td>
+                                                <td>{{x.Candidate_Id.Gender}}</td>  
+                                                <td>{{x.Candidate_Id.Candidate_Email}}</td>
+                                                <td>{{x.Candidate_Id.Phone_no}}</td>
+                                                <td>{{x.Candidate_Id.Qualification}}</td>
+                                                <td>
+                                                    {% if x.Job_status == '0' %}
+                                                        <a href="{% url 'IndustryPartner:accept_candidate' id=x.Candidate_Id.id %}"><button class="btn btn-primary">Accept</button></a>
+                                                        <a href="{% url 'IndustryPartner:reject_candidate' id=x.Candidate_Id.id %}"><button class="btn btn-danger">Reject</button></a>
+                                                    {% elif x.Job_status == '1' %}
+                                                        <a href="{% url 'IndustryPartner:completed_candidate' id=x.Candidate_Id.id %}"><button class="btn btn-primary">Hired</button></a>
+                                                        <a href="{% url 'IndustryPartner:Decline_candidate' id=x.Candidate_Id.id %}"><button class="btn btn-danger">Decline</button></a>
+                                                    {% elif x.Job_status == '2' %}
+                                                    <a class="tblDelBtn">
+                                                        <i class="fa fa-REQUEST"> R e j e c t e d </i>
+                                                    </a>
+                                                    {% elif x.Job_status == '3' %}
+                                                     
+                                                        <a class="tblDelBtn">
+                                                            <i class="fa fa-REQUEST"> D e c l i n e d </i>
+                                                        </a>
+                                                    {% elif x.Job_status == '4' %}
+                                                    
+                                                        <a class="tblDelBtn">
+                                                            <i class="fa fa-REQUEST"> H i r e d </i>
+                                                        </a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><center><b>No Candidate Avilable.</b></center></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

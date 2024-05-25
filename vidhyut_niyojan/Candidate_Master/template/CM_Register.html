@@ -1,0 +1,485 @@
+<!doctype html>
+{% load static %}
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover"
+    data-sidebar-image="none">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Pssc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <!--Swiper slider css-->
+    <link href="{% static 'assets/libs/swiper/swiper-bundle.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Layout config Js -->
+    <script src="{% static 'assets/js/layout.js' %}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{% static 'assets/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .required:after {
+            content: " *";
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+    <!-- Begin page -->
+    <div class="layout-wrapper landing">
+        <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar" style="background-color: #fff;">
+            <!-- <div class="container"> -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark " alt="logo dark" height="70" style="margin-left: 100%;">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                </a>
+                <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="/"> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{%url 'IndustryPartner:industry_login' %}"> Industry Partner</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{%url 'TrainingPartner:training_login' %}"> Training partner </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{% url 'Candidate_Master:candidate_login' %}"> Candidate </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="/"> Job Fair </a>
+                        </li>
+
+                        <a class="navbar-brand" href="/">
+                            <img src="{% static 'assets/images/pssc/14.png' %}" class="card-logo card-logo-dark" alt="logo dark" height="70" style="padding-left: 50px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                        &nbsp;
+                        <a class="navbar-brand ml-5" href="/">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-dark fs-15" alt="logo dark" height="70" style="padding-left: 30px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                    </ul>
+
+                </div>
+
+          
+        </nav>
+        <!-- end navbar -->
+        <section class="section pb-0 hero-section" id="hero">
+            <div class="bg-overlay bg-overlay-pattern"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-sm-10">
+                        <div class="text-center mt-lg-5 pt-5">
+
+                        </div>
+
+                    </div>
+                     <!-- end hero section -->
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- signin -->
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7965.jpg?w=826&t=st=1669974413~exp=1669975013~hmac=7a170479f6668dd4cb8b9ba4ab91a3d7183299dfe7ad74f3f5662de0afd03715">
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-4 mt-5">
+                <div class="card mt-4">
+
+                    <div class="card-body p-4">
+                        <div class="text-center mt-2">
+                            <h2 class="text-primary"> Candidate Register </h2>
+
+                        </div>
+
+                        <div class="p-2 mt-4">
+                            <form method = "POST" action="{%url 'Candidate_Master:Candidate_register'%}">
+                                {% csrf_token %}
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">First Name </label>
+                                            <input type="text" class="form-control" value="{{firstname}}" placeholder="Enter your First name" name = "FirstName" required>
+                                        </div>
+                                
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Candidate_Email</label>
+                                            <input type="email" class="form-control" value="{{email}}" placeholder="Enter Email " name = "Candidate_Email" required>
+                                        </div>
+                                        {%for message in messages %}
+                                        {%if "emailverify" in message.tags %}
+                                            <p style = "color:red"> {{message}} </p>
+                                        {%endif%}
+                                        {%endfor%}
+                                        <div class="mb-3">
+                                            <label for="username" class="required" class="form-label">Date Of Birth </label>
+                                            <input type="date" class="form-control" value="{{dob}}" placeholder="Enter Date Of Birth" name = "DOB" required>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Adhar card Number</label>
+                                            <input type="number" class="form-control" placeholder="Enter Adhar Number" value="{{adhar_number}}" name = "Adhar_Number" required onKeyPress="if(this.value.length==12) return false;">
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">willing to relocate</label><br>
+                                            &nbsp<input type="radio"  name="willing_to_relocate" value="yes">
+                                            &nbsp <label>Yes</label>
+                                            &nbsp <input type="radio"  name="willing_to_relocate" value="no">
+                                            &nbsp <label >No</label><br>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Training Type
+                                            </label>
+                                            <select name="Training_Type" class="form-select" id="cars">
+                                            <option value="">Select Training Type</option>
+                                            <option value="Government">Government</option>
+                                            <option value="Non-Government">Non-Government</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Training Status
+                                            </label>
+                                            <input type="text" class="form-control" value="{{training_status}}" id="username" placeholder="Enter Traing Status" name = "Training_Status" required>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Training Scheme Name
+                                            </label>
+                                            <input type="text" class="form-control" value="{{training_scheme_name}}" id="username" placeholder="Training Scheme Name" name = "Training_Scheme_Name" required>
+                                        </div>
+
+                                        
+
+                                        <div class="mb-3">
+                                            <label for="username" class="required" class="form-label"><b>State:</b> </label>
+                                            <select id="selectstate" onchange="myFunction()" name="StateName" class="form-control"  placeholder="Select State name ">
+                                                {% for x in states %}
+                                                <option  value="{{x.id}}">{{x.State_Name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Password</label>
+                                            <input type="password" class="form-control" value="{{password}}" placeholder="Enter password "name = "Password" required>
+                                        </div>
+                                        {%for message in messages %}
+                                        {%if "pwn" in message.tags %}
+                                            <p style = "color:red"> {{message}} </p>
+                                        {%endif%}
+                                        {%endfor%}
+                                    </div>
+
+                                    <div class="col-md-6" >
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Last Name </label>
+                                            <input type="text" class="form-control" value="{{lastname}}" placeholder="Enter your Last name "name = "Lastname" required>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Phone No
+                                            </label>
+                                            <input type="number" class="form-control" value="{{phone_number}}" placeholder="Enter Phone Number"  onKeyPress="if(this.value.length==10) return false;" name = "Phone_no" >
+                                            {%for message in messages %}
+                                            {%if "phoneverify" in message.tags %}
+                                                <p style = "color:red"> {{message}} </p>
+                                            {%endif%}
+                                            {%endfor%}
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Gender </label><br>
+                                            &nbsp<input type="radio"  name="Gender" value="male">
+                                            &nbsp <label>Male</label>
+                                            &nbsp <input type="radio"  name="Gender" value="female">
+                                            &nbsp <label >Female</label><br>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Qualification
+                                            </label>
+
+                                            <select name="Qualification" class="form-select" id="cars">
+                                            <option value="">Select Qualification</option>
+                                            <option value="below to 10">Below to 10</option>
+                                            <option value="10 Pass">10 Pass</option>
+                                            <option value="12 Pass">12 Pass</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Graduation">Graduation</option>
+                                            <option value="Post Graduation">Post Graduation</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="username" class="required" class="form-label"><b>Cource:</b> </label>
+                                            <select id="selectstate" onchange="myFunction()" value="{{cource}}" name="cource" class="form-control"  placeholder="Select State name ">
+                                                {% for x in cource %}
+                                                <option  value="{{x.id}}">{{x.CourseName}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label"> differently abled
+                                            </label><br>
+                                            &nbsp<input type="radio"  name="differently_abled" value="yes">
+                                            &nbsp <label>Yes</label>
+                                            &nbsp <input type="radio"  name="differently_abled" value="no">
+                                            &nbsp <label >No</label><br>
+
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label">Job Role
+                                            </label>
+                                            <input type="text" class="form-control" value="{{job_role}}" id="username" placeholder="Enter Address" name = "Job_role" required>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-control">Placed Status
+                                            </label><br>
+                                            &nbsp<input type="radio"  name="Placed_Status" value="Placed">
+                                            &nbsp <label>Placed</label>
+                                            &nbsp <input type="radio"  name="Placed_Status" value="Not_Placed">
+                                            &nbsp <label >Not Placed</label><br>
+                                        </div>
+
+                                        <div class="mb-3" >
+                                            <label for="username" class="required" class="form-label"><b>City Name: </b></label>
+
+                                            <select id="statewisecity" class="form-control"  placeholder="Select City Name " name ="DistrictName" required>
+                                                <option value="">Select District </option>
+                                                {% for val in city %}
+                                                    <option value="{{val.id}}">{{val.City_Name}}</option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="username" class="required" class="form-label">Pincode </label>
+                                            <input type="number" class="form-control" value="{{pincode}}"  onKeyPress="if(this.value.length==6) return false;" placeholder="Enter Pincode" name = "pincode" required>
+                                        </div>
+
+                                        
+
+                                    
+                                        
+
+                                        
+                                       
+                                        {%for message in messages %}
+                                        {%if "enteremail" in message.tags %}
+                                            <p style = "color:red"> {{message}} </p>
+                                        {%endif%}
+                                        {%endfor%}
+
+                                        
+
+                                        
+
+
+                                        
+
+                                        
+                                    </div>
+
+
+                                    
+
+                                    <div class="col-md-12" >
+                                    <div class="mb-6">
+                                            <label for="username" class="required" class="form-label">Address 1 </label>
+                                            <textarea class="form-control" value="{{address}}" placeholder="Enter Address" name = "Address1" required></textarea>
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="username" class="required" class="form-label">Address 2 </label>
+                                        <textarea type="text" class="form-control" value="{{address1}}" placeholder="Enter Address" name = "Address2" required></textarea>
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="col-md-4 offset-4">
+                                <div class="mt-4">
+                                    <button class="btn btn-primary p w-100" type="submit"><Candidate></Candidate> Register</button>
+                                </div>
+                               </div>
+
+                               <div class="mt-4">
+
+                        <center>        <h4 class="fs-13 mb-4 ">Alredy Have account ?<a href="{%url 'Candidate_Master:candidate_login'%}"> Sing In </a></h4></center>
+                                 </div>
+
+
+                            </form>
+                        </div>
+                        <script>
+                        function myFunction() {
+                            var stateinfo = document.getElementById("selectstate").value;
+                            
+                            console.log('stateinfo', stateinfo);
+                            output = ""
+                            $.ajax({
+                                type: "POST",
+                                url: "{% url 'IndustryPartner:new_get_city_ajax' %}",
+                                data: {
+                                    'stateinfo': stateinfo,
+                                    "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val(),
+                                },
+                                success: function(response) {
+                                    $("#statewisecity").empty();
+                                    console.log(response.statewisecity)
+
+                                    x = response.statewisecity
+
+                                    var select = document.getElementById('statewisecity');
+                                    var option;
+                                    for (var i = 0; i < x.length; i++) {
+
+                                        option = document.createElement('option');
+                                        option.text = x[i]["City_Name"];
+                                        option.id = x[i]['id']
+                                        select.add(option);
+                                    }
+                                },
+                            });
+                        }
+                    </script>
+                    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Start footer -->
+        <footer class="custom-footer bg-dark py-5 position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <div>
+                                <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark" alt="logo dark"
+                                     style="background-color: aliceblue; padding: 10px; border-radius: 20px;" height="100">
+                            </div>
+                            <div class="mt-4 fs-13">
+                                <!--              <p>IPFIndeer customer dashbord</p> -->
+                                <p class="ff-secondary">Vidyut Rozgar Portal contains the industry partners and training partners for the candidates. 
+                                    It is working on providing skilled candidates and employment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 ms-lg-auto">
+                        <div class="row">
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Company</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'Home:PSSC_HOME' %}">Home</a></li>
+                                        <li><a href="#">About Us </a></li>
+                                        <li><a href="{% url 'Home:contact_us' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Partnership</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'IndustryPartner:industry_login' %}">Industry Partner</a></li>
+                                        <li><a href="{% url 'TrainingPartner:training_login' %}">Training Partner</a></li>
+                                        
+                                        <li><a href="{% url 'Candidate_Master:candidate_login' %}">Candidate Login</a></li>
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Support</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+
+                                        <li><a href="pages-faqs.html">Email : mailto:test@gmail.com</a></li>
+                                        <li><a href="pages-faqs.html">Mobile No. : 876543217</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row text-center text-sm-start align-items-center mt-5">
+                    <div class="col-sm-7 offset-4">
+                          <p>   © Copyright - 2022 All Rights Reserved by Power Sector Skill Council India
+                               
+                          </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'assets/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+
+    <!--Swiper slider js-->
+    <script src="{% static 'assets/libs/swiper/swiper-bundle.min.js' %}"></script>
+
+    <!-- landing init -->
+    <script src="{% static 'assets/js/pages/landing.init.js' %}"></script>
+    <script>
+        document.getElementById("required").required = true;
+    </script>
+</body>
+
+
+
+
+</html>
+
+
+

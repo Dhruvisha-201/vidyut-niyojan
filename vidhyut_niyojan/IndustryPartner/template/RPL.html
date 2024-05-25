@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">RPL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card card-box">
+                                <div class="card-head">
+                                    <header>RPL</header>
+                                </div>
+                                <style>
+                                    .required:after {
+                                        content:" *";
+                                        color: red;
+                                        font-size: 15px;
+                                    }
+                                </style>
+                                <div class="card-body " id="bar-parent">
+                                    <form method = "POST" action ="{% url 'IndustryPartner:IP_RPL' %}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Training Type :<label class="required" ></label></label>
+                                                    <select class="form-select" name="training_type" style="border-radius: 50px;">
+                                                        <option value="STT">Short Term Training</option>
+                                                        <option value="RPL">Recognition Of Prior Lerning</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Job Role :<label class="required" ></label></label>
+                                                    <select class="form-select" name="job_role" style="border-radius: 50px;">
+                                                        {% for job in job_role %}
+                                                        <option value="{{job.Job_Name}}">{{job.Job_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Name :<label class="required" ></label></label>
+                                                    <input type="text" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Name" style="border-radius: 50px;" name = "SPOC_name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Number :<label class="required" ></label></label>
+                                                    <input type="number" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Number" onKeyPress="if(this.value.length==10) return false;" style="border-radius: 50px;" name = "SPOC_number" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Email :<label class="required" ></label></label>
+                                                    <input type="text" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Email" style="border-radius: 50px;" name = "SPOC_Email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Designation :<label class="required" ></label></label>
+                                                    <input type="text" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Designation" style="border-radius: 50px;" name = "SPOC_designation" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6" >
+                                                <div class="form-group" >
+                                                    <label for="simpleFormEmail" > Target  :<label class="required" ></label></label>
+                                                    <input type="number" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Target" style="border-radius: 50px;" value="0" name = "Target" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6" >
+                                                <div class="form-group" >
+                                                    <label for="simpleFormEmail" >Area<label class="required" ></label></label>
+                                                    <select type="Text" class="form-select" id="simpleFormEmail" 
+                                                        placeholder="Enter Area" style="border-radius: 50px;" name = "Area" required>
+                                                        <option value="Special(Left Wing Extremism)">Special(Left Wing Extremism)</option>
+                                                        <option value="Aspirational">Aspirational</option>
+                                                        <option value="Normal">Normal</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="simpleFormEmail"> Country :</label>
+                                                        
+                                                        <select id="selectcountry" name="country" style="border-radius: 50px;" class="form-select" onchange="myCountry()">
+                                                            <option value="">Select Country</option>
+                                                            {% for x in countries %}
+                                                            
+                                                            <option value="{{x.id}}">{{x.Country_Name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="simpleFormEmail"> State :</label>
+                                                        <select id="countrystate" class="form-select" style="border-radius: 50px;" name="state" onchange="myFunction()">
+                                                            <option value="">Select State</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="simpleFormEmail">City :</label>
+                                                        <select id="statewisecity" name="city" style="border-radius: 50px;" class="form-select"  placeholder="Enter district Name " required>
+                                                            <option value="">Select City</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail"> Pincode :</label>
+                                                    <input type="number"  id="simpleFormEmail"  class="form-control"   
+                                                        placeholder="Enter Pincode" onKeyPress="if(this.value.length==6) return false;" style="border-radius: 15px;" name = "Pincode" required></textarea>
+                                                </div>
+                                            </div>
+                                            <center>
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-primary">Submit</button> 
+                                                <a href = "{% url 'IndustryPartner:RPL_List' %}"><button type="button" class="btn btn-danger">Cancel</button><br></a>
+                                            </div>
+                                        </center>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function myFunction() { 
+                var stateinfo = document.getElementById("countrystate").value ;
+                console.log('stateinformation',stateinfo);
+                output = ""
+                $.ajax({
+                    type: "POST",
+                    url: '/ip/get_city/',
+                    data: {
+                        'stateinfo': stateinfo,
+                        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    
+                    success: function(response) {
+                        $("#statewisecity").empty();
+                        x = response.statewisecity
+                        console.log('print new data',x)
+
+                        var select = document.getElementById('statewisecity');
+                        var option;
+                        for (var i = 0; i < x.length; i++) {
+
+                            option = document.createElement('option');
+                            option.text = x[i]["City_Name"];
+                            option.id = x[i]['id']
+                            select.add(option);
+                        }
+                    },
+                });
+
+            }
+
+        </script>
+
+
+        <script>
+            function myCountry() {
+                var countryinfo = document.getElementById("selectcountry").value;
+
+                console.log(countryinfo);
+                output = ""
+                $.ajax({
+                    type: "POST",
+                    url: '/ip/get_state/',
+                    data: {
+                        'countryinfo': countryinfo,
+                        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    
+                    success: function(response) {
+                        
+                     
+                        $("#countrystate").empty();
+                    
+                        newvalue = response.countrystate
+
+                        var select = document.getElementById('countrystate');
+                        var option;
+                    
+                        for (var i = 0; i < newvalue.length; i++) {
+
+                            option = document.createElement('option');
+                            console.log(option);
+                            option.text = newvalue[i]["State_Name"];
+                            option.id = newvalue[i]['id']
+                            select.add(option);
+                        }
+                    },
+                });
+
+            }
+        </script>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <script>
+            document.getElementById('e').value = new Date().toISOString().substring(0, 10);
+        </script>
+       {% endblock %}

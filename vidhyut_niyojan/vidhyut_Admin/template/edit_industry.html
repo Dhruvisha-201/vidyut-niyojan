@@ -1,0 +1,207 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content  %}
+            <!-- end sidebar menu -->
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">INDUSTRY PARTNER</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="#">Home</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">INDUSTRY PARTNER</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- start new student list -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card card-box">
+                                <div class="card-head">
+                                    <header>Edit Industry</header>
+                                </div>
+                                <div class="card-body " id="bar-parent">
+                                    <form action="/ad/edit_industry/{{edit.id}}/" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">First Name :</label>
+                                                    <input type="text" name="First_Name" value="{{edit.First_Name}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter First Name" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Last Name :</label>
+                                                    <input type="text" name="Last_name" value="{{edit.Last_name}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Last Name" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Partner Type :</label>
+                                                    <input type="text" name="Partner_Type" value="{{edit.Partner_Type}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Partner Type" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Legal Entity Name :</label>
+                                                    <input type="text" name="Legal_Entity_Name" value="{{edit.Legal_Entity_Name}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Legal Entity Name" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Name :</label>
+                                                    <input type="text" name="SPOC_Name" value="{{edit.SPOC_Name}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Name" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Email :</label>
+                                                    <input type="email" name="SPOC_Email" value="{{edit.SPOC_Email}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Email" style="border-radius: 50px;">
+                                                </div>
+                                                {% for message in messages %}
+                                                {%if "admineditverify" in message.tags %}
+                                                    <div>
+                                                        <center><h4><p style = "color:red"> {{message}} </p> </h4></center>
+                                                    </div>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Password :</label>
+                                                    <input type="password" name="Password" value="{{edit.Password}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Email" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">SPOC Phone :</label>
+                                                    <input type="number" name="SPOC_Phone" value="{{edit.SPOC_Phone}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter SPOC Phone" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Address :</label>
+                                                    <input type="text" name="Full_Address" value="{{edit.Full_Address}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Address" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                <label for="simpleFormEmail" ><b>State Name :</b> </label><br> 
+                                                   
+                                                    <select type="text" id="selectstate" onchange="myFunction()" name="State_Name" value="{{edit.State_Name.State_Name}}" class="form-select" id="simpleFormEmail"
+                                                        placeholder="Enter State Name" style="border-radius: 50px;">
+                                                        <option value="{{edit.State_Name.State_Name}}">Select State</option>
+                                                        {% for val in states %} 
+                                                            <option value="{{val.id}}">{{val.State_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                <label for="simpleFormEmail">District Name : </b></label><br>
+                                                <select id="statewisecity"  class="form-select" placeholder="Enter district Name " value="{{edit.District_Name.City_Name}}" name ="DistrictName" style="border-radius: 50px;" >
+                                                    <option value="{{edit.District_Name.City_Name}}">Select City</option>
+                                                    {% for val in city %}
+                                                        <option value="{{val.id}}">{{val.City_Name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Pincode :</label>
+                                                    <input type="number" name="PIN_Code" value="{{edit.PIN_Code}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Pincode" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Office Phone Number :</label>
+                                                    <input type="number" name="Office_Phone_No" value="{{edit.Office_Phone_No}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Office Phone Number" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Website URL :</label>
+                                                    <input type="text" name="Website_Link" value="{{edit.Website_Link}}" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Website URL" style="border-radius: 50px;">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            
+                                        </div>
+                                        <br>
+                                        <div class="col-md-3 offset-5">
+                                            <button type="submit" class="btn btn-primary">Update</button> 
+                                            <a href="/ad/industry_list/" class="btn btn-danger">Cancel<br></a>
+                                        </div>
+                                        <br>
+                                    </form>
+                                </div>
+                                <script>
+                                    function myFunction() {
+                                        var stateinfo = document.getElementById("selectstate").value;
+            
+                                        console.log(stateinfo);
+                                        output = ""
+                                        $.ajax({
+                                            type: "POST",
+                                            url: '/ad/get_city_admin/',
+                                            data: {
+                                                'stateinfo': stateinfo,
+                                                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                                            },
+                                            success: function(response) {
+                                                $("#statewisecity").empty();
+                                                console.log(response.statewisecity)
+            
+                                                x = response.statewisecity
+            
+                                                var select = document.getElementById('statewisecity');
+                                                var option;
+                                                for (var i = 0; i < x.length; i++) {
+            
+            
+            
+                                                    option = document.createElement('option');
+                                                    option.text = x[i]["City_Name"];
+                                                    select.add(option);
+            
+            
+                                                }
+            
+            
+                                            },
+                                        });
+            
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end new student list -->
+                </div>
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page container -->
+        {% endblock %}

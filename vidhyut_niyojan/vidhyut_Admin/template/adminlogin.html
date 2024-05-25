@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Responsive Admin Template" />
+    <meta name="author" content="SmartUniversity" />
+    <title>Smart University | Bootstrap Responsive Admin Template</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="{% static 'fonts/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'fonts/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'fonts/font-awesome/v6/css/all.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'fonts/material-design-icons/material-icon.css' %}" rel="stylesheet" type="text/css" />
+    <!--bootstrap -->
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/material/material.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/material_style.css' %}">
+    <!-- Theme Styles -->
+    <link href="{% static 'assets/css/theme/light/theme_style.css' %}" rel="stylesheet" id="rt_style_components" type="text/css" />
+    <link href="{% static 'assets/css/plugins.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme/light/style.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme/light/theme-color.css' %}" rel="stylesheet" type="text/css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://www.einfosoft.com/templates/admin/smart/source/assets/img/favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<body>
+
+<div class="container">
+    <div class="row" style="--bs-gutter-x: 0rem;">
+        
+        <div class="col-md-6 " >
+            <img src="{% static 'assets/img/Data_security_05.png' %}" style="width: 100%; margin-top:160px">
+            
+        </div>
+  
+        <div class="col-md-5 offset-1 mt-5" >
+            <div class="signin-form" style="padding :20px; margin-top:180px">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark " alt="logo dark" height="100">
+
+                </a>
+                <br>
+                <br>
+                    <h2><b>Weclome Back Admin !</b></h2>
+                <br>  
+                <!-- <h2 class="form-title">Login</h2> -->
+                <form class="register-form" id="login-form" action="/ad/adlogin/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="">
+                            <input name="username" type="text" placeholder="User Name" class="form-control input-height" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input name="password" type="password" placeholder="Password"
+                                class="form-control input-height" />
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group form-button">
+                        <button class="btn btn-round btn-primary" type="submit" id="signin">Login</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <!-- start js include path -->
+    <script src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/popper/popper.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery-blockui/jquery.blockui.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/plugins/feather/feather.min.js' %}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+    <!-- Common js-->
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    <script src="{% static 'assets/js/layout.js' %}"></script>
+    <script src="{% static 'assets/js/theme-color.js' %}"></script>
+    <!-- material -->
+    <script src="{% static 'assets/plugins/material/material.min.js' %}"></script>
+    <!-- chart js -->
+    <script src="{% static 'assets/plugins/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/chart/apex/home-data3.js' %}"></script>
+    <script src="{% static 'assets/plugins/sparkline/jquery.sparkline.js' %}"></script>
+    <script src="{% static 'assets/js/pages/sparkline/sparkline-data.js' %}"></script>
+    <!-- end js include path -->
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+ {% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Dashboard</div>
+                </div>
+
+            </div>
+        </div>
+        <center>
+        {%for message in messages %}
+            {%if "loginadded" in message.tags %}
+            <div class="message">
+            <p style = "color:green"> {{message}} </p>   {# show gst error message #}
+            </div>
+            {%endif%}
+        {%endfor%}</center>
+        <!-- start widget -->
+        <div class="row ">
+            <div class="col-xl-3 col-lg-6">
+                <div class="card comp-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="col mt-0">
+                                    <h4 class="info-box-title">Total Candidate</h4>
+                                </div>
+                                <h3 class="mt-1 mb-3 info-box-title col-green">{{NC}}</h3>
+                                <div class="progress">
+                                    <div class="progress-bar l-bg-purple" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-auto">
+                                <div id="sparkline7"><canvas style="display: inline-block; width: 267px; height: 70px; vertical-align: top;"></canvas>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-xl-3 col-lg-6">
+                <div class="card comp-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="col mt-0">
+                                    <h4 class="info-box-title">New Candidate</h4>
+                                </div>
+                                <h3 class="mt-1 mb-3 info-box-title col-green">0</h3>
+                                <div class="progress">
+                                    <div class="progress-bar l-bg-red" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div id="sparkline12"><canvas style="display: inline-block; width: 367px; height: 70px; vertical-align: top;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-xl-3 col-lg-6">
+                <div class="card comp-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="col mt-0">
+                                    <h4 class="info-box-title">Total Training Center</h4>
+                                </div>
+                                <h3 class="mt-1 mb-3 info-box-title col-green">{{TC}}</h3>
+                                <div class="progress">
+                                    <div class="progress-bar l-bg-green" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-auto">
+                                <div id="sparkline9"><canvas style="display: inline-block; width: 167px; height: 70px; vertical-align: top;"></canvas>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- end widget -->
+        <!-- chart start -->
+
+
+        <!-- start new student list -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card  card-box">
+                    <div class="card-head">
+                        <header style="font-size:20px">Candidate List</header>
+                        <div class="tools">
+                            <!-- <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a> -->
+                            <a href="/Tp/candidate_list/"><button class="btn btn-primary" style="font-size: 12px; padding: 11px 17px;">View All</button></a>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body ">
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <table class="table display product-overview mb-30">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                            <th>Qualification</th>
+                                            <th>Course</th>
+                                            <th>Job Name</th>
+                                            <th>Gender</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for x in candidatelist %}
+                                            <tr>
+                                                <td>{{x.FirstName}}</td>
+                                                <td>{{x.LastName}}</td>
+                                                <td>{{x.Candidate_Email}}</td>
+                                                <td>{{x.Phone_no}}</td>
+                                                <td>{{x.Qualification}}</td>
+                                                <td>{{x.Course_Id}}</td>
+                                                <td>{{x.Job_Name}}</td>
+                                                <td>{{x.Gender}}</td>
+                                                <td>{{x.Address1}}</td>
+                                                <td>{{x.City_Id}}</td>
+                                                <td>{{x.State_Id}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+
+</div>
+<!-- end page container -->
+<!-- start footer -->
+
+{% endblock %}

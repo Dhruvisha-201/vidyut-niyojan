@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Raise Training Request</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- start new student list -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <br>
+                      
+                        <br>
+                       
+                        <a href="{% url 'IndustryPartner:IP_RPL' %}"><button type="button" class="btn btn-primary" style="float:right;margin-right: 2%; "> + Add New RPL</button></a>
+                        <div class="card-body ">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display product-overview
+                                        mb-30" id="support_table">
+                                        {% for message in messages %}
+                                        {%if "RPLdelete" in message.tags %}
+                                            <div class="message">
+                                                <center><h4><p style = "color:red"> {{message}} </p> </h4></center>
+                                            </div>
+                                        {%endif%}
+                                        {% endfor %}
+                                        {% for message in messages %}
+                                        {%if "datainsert" in message.tags %}
+                                            <div class="message">
+                                                <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                                
+                                            </div>
+                                        {%endif%}
+                                        {% endfor %}
+                                        <thead>
+                                            <tr>
+                                                <th>SPOC Name</th>
+                                                <th>SPOC Number</th>
+                                                <th>SPOC Email</th>
+                                                <th>SPOC Designation</th>
+                                                <th>Trining Type</th>
+                                                <th>Job Role</th>
+                                                <th>Target</th>
+                                                <th>Area</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for x in RPL_data %}
+                                        
+                                            
+                                            <tr>
+                                                <td>{{x.SPOC_Name}}</td>
+                                                <td>{{x.SPOC_Number}}</td>
+                                                <td>{{x.SPOC_Email}}</td>
+                                                <td>{{x.SPOC_Designation}}</td>
+                                                <td>{{x.Trining_type}}</td>
+                                                <td>{{x.Job_role}}</td>
+                                                <td>{{x.Target}}</td>
+                                                <td>{{x.Area}}</td>
+                                                <td align="center"><a href="{% url 'IndustryPartner:RPL_delete' id=x.id %}"><i class="fa fa-trash"></i></a></td>
+                                                
+                                            </tr>
+                                            {% empty %}
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>No Data Avilable</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                                
+                                            
+                                            {% endfor %}
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

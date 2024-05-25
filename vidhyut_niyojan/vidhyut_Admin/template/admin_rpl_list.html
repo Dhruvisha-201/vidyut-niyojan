@@ -1,0 +1,120 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content  %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Training Request</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="#">Home</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">RPL</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Remark
+                      </button>
+                      <br>
+                      <br>
+                      <hr>
+                      
+                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Remark title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                             This is Test Model Remark
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <!-- Button trigger modal -->
+                
+                <!-- Modal -->
+                
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card  card-box">
+                                {% for message in messages %}
+                                    {%if "rpldeleted" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:red"> {{message}} </p> </h4></center>
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                <div class="card-body ">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table class="table display product-overview mb-30" id="support_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Industry Name</th>
+                                                        <th>Training Type</th>
+                                                        <th>Target</th>
+                                                        <th>Job Role</th>
+                                                        <th>SPOC Name</th>
+                                                        <th>SPOC Number</th>
+                                                        <th>SPOC Email</th>
+                                                        <th>SPOC Designation</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for list_rpl in list_of_rpl %}
+                                                    
+                                                    <tr>
+                                                        <td>{{list_rpl.Industry_partner_Id.SPOC_Name}}</td>
+                                                        <td>{{list_rpl.Trining_type}}</td>
+                                                        <td>{{list_rpl.Target}}</td>
+                                                        <td>{{list_rpl.Job_role}}</td>
+                                                        <td>{{list_rpl.SPOC_Name}}</td>
+                                                        <td>{{list_rpl.SPOC_Number}}</td>
+                                                        <td>{{list_rpl.SPOC_Email}}</td>
+                                                        <td>{{list_rpl.SPOC_Designation}}</td>
+                                                        <td>{{list_rpl.pincode}}</td>
+                                                        <td>
+                                                            <span href="#" class="badge badge-success">Completed</span>
+                                                        </td>
+                                                        <td>
+                                                            <!-- <a href="/ad/edit_training/{{list_rpl.id}}/" class="tblEditBtn">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a> -->
+                                                            <a href="/ad/rpl_deleted/{{list_rpl.id}}/" class="tblDelBtn">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                            
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page content -->
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+       {% endblock %}
+

@@ -1,0 +1,68 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Applied Candidate </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+
+                <div class="card  card-box">
+                    {% for message in messages %} {% if trainingcenterdelete in message %}
+                    <div class="message">
+                        <center>
+                            <h4>
+                                <p style="color:red"></p>
+                            </h4>
+                        </center>
+                        <a class="del-msg">&times;</a>
+                    </div>
+                    {% endif %} {% endfor %}
+                    <div class="card-body">
+                        <div class="table-wrap">
+                            <form method="post" action="{% url 'TrainingPartner:view_job_post' %}">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                    <td><input type="hidden" name="jobs" value="{{all_job.id}}"></td>
+                                    <table class="table display product-overview mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Center Name</th>
+                                                <th>Candidate Name </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for val in all_candid %}
+                                            <tr>
+                                                <td>{{val.Candidate_Id.Training_Center_Id.Training_Center_Name}}</td>
+                                                <td>{{val.Candidate_Id.FirstName}}&nbsp;{{val.Candidate_Id.LastName}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <button type="submit" class="btn btn-primary ">View All Job Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+{% endblock %}

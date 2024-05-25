@@ -1,0 +1,119 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper ">
+    <div class="page-content ">
+        <div class="page-bar ">
+            <div class="page-title-breadcrumb ">
+                <div class=" pull-left ">
+                    <div class="page-title ">Training Center</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+        <div class="row ">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="card card-box ">
+                    <div class="card-head ">
+                        <header>Training Center</header>
+                    </div>
+                    <div class="card-body " id="bar-parent ">
+                        <form method="POST" class="post-form" action="/Tp/edit_center/{{edit_cen.id}}/" enctype="multipart/form">
+                            {% csrf_token %}
+                            <div class="row ">
+                                
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group " >
+                                        <label>Training Center Name :<label class="required"></label></label>
+                                        <input type="text" name="center_name" value="{{edit_cen.Training_Center_Name}}" class="form-control " style="border-radius: 50px; ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Contact Name  :<label class="required"></label></label>
+                                        <input type="text" value="{{edit_cen.Contact_Name}}" name="Contact_Name" class="form-control " style="border-radius: 50px; ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Contact Email  :<label class="required"></label></label>
+                                        <input type="email" value="{{edit_cen.Contact_Email}}" name="Contact_Email" class="form-control " style="border-radius: 50px; ">
+                                    </div>
+                                    {% for message in messages %} {%if "trainingcenemail" in message.tags %}
+                                    <div>
+                                        <center>
+                                            <h4>
+                                                <p style="color:red"> {{message}} </p>
+                                            </h4>
+                                        </center>
+                                        <!-- <a href="#" class="del-msg">&times;</a> -->
+                                    </div>
+                                    {%endif%} {% endfor %}
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Contact No  :<label class="required"></label></label>
+                                        <input type="number" value="{{edit_cen.Contact_No}}" name="Contact_No" class="form-control " style="border-radius: 50px; " onKeyPress="if(this.value.length==10) return false;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Address1 :<label class="required"></label></label>
+                                        <input type="text" value="{{edit_cen.Address1}}" name="Address1" class="form-control" style="border-radius: 50px; ">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Address2 :<label class="required"></label></label>
+                                        <input type="text" value="{{edit_cen.Address2}}" name="Address2" class="form-control " style="border-radius: 50px; ">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>City :<label class="required"></label></label>
+                                        <select name="City" class="form-select" style="border-radius: 50px;">
+                                            {% for val in city %}
+                                            <option value="{{val.id}}">{{val.City_Name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>State :<label class="required"></label></label>
+                                        <select name="state" class="form-select" style="border-radius: 50px;">
+                                            {% for val in state %}
+                                            <option value="{{val.id}}">{{val.State_Name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <div class="form-group ">
+                                    <label>Pin Code  :<label class="required"></label></label>
+                                    <input type="number" value="{{edit_cen.Pin_Code}}" name="Pin_Code" class="form-control " style="border-radius: 50px; " onKeyPress="if(this.value.length==6) return false;">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 offset-5">
+                                <button type="submit " class="btn btn-primary ">Submit</button>
+                                <a href="{% url 'TrainingPartner:center_list' %}"><button type="button"
+                                    class="btn btn-danger">Cancel</button></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+
+{% endblock %}

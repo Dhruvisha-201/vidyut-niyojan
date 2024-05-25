@@ -1,0 +1,77 @@
+{% extends 'CM_header.html' %} 
+{% load static %} 
+{% block content %}
+            <!-- start page content -->
+            
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Job Details</div>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                    
+                    <!-- start new student list -->
+                   
+                    
+                        <div class="row">
+                            <form method ='POST' action="{% url 'Candidate_Master:candidate_apply_job' id=job_post.id %}">
+                                {% csrf_token %}
+                                <div class="col-lg-12 col-md-6 col-12 col-sm-6">
+                                    <div class="blogThumb">
+                                        
+                                        <div class="course-box">
+                                            <!-- <h4>{{x.Job_Name}}</h4> -->
+                                            
+                                            <div class="text-muted"><span class="m-r-10">Start Date {{job_post.Job_Add_Date}}</span>
+                                            <span style="float: right;" class="m-r-10">End Date {{job_post.Job_Ending_Date}}</span>
+                                            </div>
+                                            <div class="text-muted">
+                                            
+                                            </div>
+                                            <h1>
+                                            <p style="font-size: 18px !important;"><span><i class="fa fa-user fa-3x"></i>&nbsp;&nbsp;&nbsp; Job Type: {{job_post.Job_type}}</span></p>
+                                            <p style="font-size: 18px !important;"><span><i class="fa fa-money"></i>&nbsp;&nbsp;&nbsp; Job Salary: {{job_post.Job_salary}}</span></p>
+
+                                            <p style="font-size: 18px !important;"><span><i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Description : {{job_post.Job_Description}}</span></p>
+                                            <p style="font-size: 18px !important;"><span><i class="fa fa-list"></i>&nbsp;&nbsp;&nbsp; Avilable requirements: {{job_post.Number_Of_Requirements}}+</span></p>
+                                            <p style="font-size: 18px !important;"><span><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp; Requirements : {{job_post.Requirements}}</span></p>
+                                            
+                                            <button type="submit" class="btn btn-primary">Apply Now</button>
+                                            {% for message in messages %}
+                                            {%if "alredy_job_apply_msg" in message.tags %}
+                                                <div class="message">
+                                                    <center><h1><p style = "color:green ; font-size:25px" > {{message}} </p> </h1></center>
+                                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                </div>
+                                            {%endif%}
+                                            {% endfor %}
+
+                                            {% for message in messages %}
+                                            {%if "job_msg" in message.tags %}
+                                                <div class="message">
+                                                    <center><h1><p style = "color:green; font-size:25px"> {{message}} </p> </h1></center>
+                                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                </div>
+                                            {%endif%}
+                                            {% endfor %}
+                                            </h1>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            </form>
+                        </div>
+                    
+                    
+                    <!-- end new student list -->
+                </div>
+            </div>
+            <!-- end page content -->
+        
+       
+        {% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'CM_header.html' %} {% load static %} {% block content %}
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <!--                            <div class=" pull-left">-->
+                <!--                                <div class="page-title">Tabs</div>-->
+                <!--                            </div>-->
+                <!--                            <ol class="breadcrumb page-breadcrumb pull-right">-->
+                <!--                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"-->
+                <!--                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>-->
+                <!--                                </li>-->
+                <!--                                <li>Tabs</li>-->
+                <!--                            </ol>-->
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="card-box">
+                <div class="card-head">
+                    <!--                                <header>Material Design Tabs </header>-->
+                </div>
+                <div class="card-body ">
+
+                    <div class="mdl-tabs">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="/cm/resume_build/" class="mdl-tabs__tab is-active">Personal Detail</a>
+                            <a href="/cm/add_skill/" class="mdl-tabs__tab">Skils</a>
+                            <a href="/cm/add_edu/" class="mdl-tabs__tab">Educations</a>
+                            <a href="/cm/add_family/" class="mdl-tabs__tab">Familiy</a>
+                            <a href="/cm/add_exp/" class="mdl-tabs__tab">Expericece</a>
+                        </div>
+
+
+                        <div class="mdl-tabs__panel p-t-20">
+                            <form method="POST" action="/cm/add_skill/">
+                                {% csrf_token %}
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <table id="myTable">
+                                            <div class="form-group">
+                                                <label> Skill</label>
+
+                                                <input type="text" name="Skills_Name" class="form-control" placeholder="Enter your Skills"
+                                                    value="{{personalskill.Skills_Name}}" required>
+
+                                            </div>
+                                        </table>
+                                        <!-- <input type="submit" class="button" value="Add another line" onclick="addField();" /> -->
+                                    </div>
+
+                                    <div class="col-md-1 offset-10">
+                                        <a href="/cm/resume_build/" class="mdl-tabs__tab btn btn-primary" style="float:right"> < Previous</a>
+                                     </div>
+                                     <div class="col-md-1">
+                                     <button type="submit" class="mdl-tabs__tab btn btn-primary">Next</button>
+                                    </div>
+
+                                  
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- end page container -->
+{% endblock %}

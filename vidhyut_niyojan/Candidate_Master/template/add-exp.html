@@ -1,0 +1,104 @@
+{% extends 'CM_header.html' %} {% load static %} {% block content %}
+
+<div class="page-content-wrapper" xmlns="http://www.w3.org/1999/html">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+<!--                            <div class=" pull-left">-->
+<!--                                <div class="page-title">Tabs</div>-->
+<!--                            </div>-->
+<!--                            <ol class="breadcrumb page-breadcrumb pull-right">-->
+<!--                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"-->
+<!--                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>-->
+<!--                                </li>-->
+<!--&lt;!&ndash;                                <li class="active">Tabs</li>&ndash;&gt;-->
+<!--                            </ol>-->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <div class="card-head">
+<!--                                <header>Material Design Tabs </header>-->
+                            </div>
+                            <div class="card-body ">
+                                
+                                <div class="mdl-tabs">
+                                   <div class="mdl-tabs__tab-bar">
+                                        <a href="/cm/resume_build/" class="mdl-tabs__tab is-active">Personal Detail</a>
+                                        <a href="/cm/add_skill/" class="mdl-tabs__tab">Skils</a>
+                                        <a href="/cm/add_edu/" class="mdl-tabs__tab">Educations</a>
+                                        <a href="/cm/add_family/" class="mdl-tabs__tab">Familiy</a>
+                                        <a href="/cm/add_exp/" class="mdl-tabs__tab">Expericece</a>
+                                    </div>
+                                    
+                                    <div class="mdl-tabs__panel p-t-20" id="tab5-panel">
+                                        <div class="row">
+                                            <form method="POST" action="/cm/add_exp/">
+                                                {% csrf_token %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label> Total years of Experience</label>
+                                                        <input type="text" class="form-control" name="Total_Exp"
+                                                            placeholder="Enter your Experience " value="{{can_experience.Total_Exp}}" required>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Objective</label>
+                                                        <input type="text" class="form-control" name="Objective" value="{{can_experience.Objective}}"
+                                                            placeholder="Objective " required>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Profile Summary</label>
+                                                        <input type="text" class="form-control" name="Profile_Summary" value="{{can_experience.Profile_Summary}}"
+                                                            placeholder="Profile Summary" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Company Name </label>
+                                                        <input type="text" class="form-control" name="Company_Name" value="{{can_experience.Company_Name}}"
+                                                            placeholder="Company Name" required>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Projects </label>
+                                                        <input type="text" class="form-control" name="Projects" value="{{can_experience.Projects}}"
+                                                            placeholder="Project" required>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-1 offset-10">
+                                                        <a href="/cm/add_family/" class="mdl-tabs__tab btn btn-primary" style="float:right"> < Previous</a>
+                                                     </div>
+                                                     <div class="col-md-1">
+                                                     <button type="submit" class="mdl-tabs__tab btn btn-primary">Finish</button></div>
+                                                    </div>
+                                                <div id="makepdf">
+                                                    
+                                                </div> 
+                                            </form>    
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- end page container -->
+      {% endblock %}

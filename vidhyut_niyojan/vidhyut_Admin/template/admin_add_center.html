@@ -1,0 +1,137 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content  %}
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">TRAINING CENTER</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="#">Home</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">TRAINING CENTER</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- start new student list -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card card-box">
+                                <div class="card-head">
+                                    <header>Add New Training Center</header>
+                                </div>
+                                <div class="card-body " id="bar-parent">
+                                    <form method="post" action="/ad/add_training_center/">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Training Partner Name : :</label>
+                                                    <select name="Training_Partner_Id" class="form-select" style="border-radius: 50px;" required>
+                                                        <option value="">Select State</option>
+                                                        {% for val in industry %}
+                                                        <option value="{{val.id}}">{{val.Training_Partner_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>State :</label>
+                                                    <select id="selectstate" name="state" class="form-select" style="border-radius: 50px;" required>
+                                                        <option value="">Select CIty</option>
+                                                        {% for val in selectstate %}
+                                                        <option value="{{val.id}}">{{val.State_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>City :</label>
+                                                    <select name="City" class="form-select" style="border-radius: 50px;" required>
+                                                        {% for val in city %}
+                                                        <option value="{{val.id}}">{{val.City_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Training center Name :</label>
+                                                    <input type="text" name="Training_Center_Name" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Training center Name"
+                                                        style="border-radius: 50px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Address 1 :</label>
+                                                    <input type="text" name="Address1" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Address 1" style="border-radius: 50px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Address 2 :</label>
+                                                    <input type="text" name="Address2" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Address 2" style="border-radius: 50px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Pin Code :</label>
+                                                    <input type="number" name="Pin_Code" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Pin Code" style="border-radius: 50px;" onKeyPress="if(this.value.length==6) return false;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Contact Name :</label>
+                                                    <input type="text" name="Contact_Name" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Contact Name" style="border-radius: 50px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Contact Email :</label>
+                                                    <input type="email" name="Contact_Email" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Contact Email" style="border-radius: 50px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail">Contact Number :</label>
+                                                    <input type="number" name="Contact_No" class="form-control" id="simpleFormEmail"
+                                                        placeholder="Enter Contact Number" onKeyPress="if(this.value.length==10) return false;" style="border-radius: 50px;" required >
+                                                </div><br>
+                                            </div>
+                                        </div>
+                                        
+                                </div>
+                                <div class="col-md-3 offset-5">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="/ad/list_center/" class="btn btn-danger">Cancel</a><br>
+                                </div>
+                                <br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end new student list -->
+            </div>
+        </div>
+        <!-- end page content -->
+    </div>
+    <script>
+        var element = document.getElementById('selectstate')
+        console.log(element)
+    </script>
+    <!-- end page container -->
+    {% endblock %}

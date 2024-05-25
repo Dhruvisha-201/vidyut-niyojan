@@ -1,0 +1,795 @@
+<!doctype html>
+{% load static %}
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover"
+    data-sidebar-image="none">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Pssc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    <!--Swiper slider css-->
+    <link href="{% static 'assets/libs/swiper/swiper-bundle.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Layout config Js -->
+    <script src="{% static 'assets/js/layout.js' %}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{% static 'assets/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+    <!-- Begin page -->
+    <div class="layout-wrapper landing">
+        <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar" style="background-color: #fff;">
+            <!-- <div class="container"> -->
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark " alt="logo dark" height="70" style="margin-left: 60%;">
+                    <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                </a>
+                <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+
+                        <li class="nav-item">
+                            <a class="nav-link fs-14" href="/">Home</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link fs-14" href="{%url 'IndustryPartner:industry_login' %}"> Industry Partner</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fs-14" href="{%url 'TrainingPartner:training_login' %}"> Training partner </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="{% url 'Candidate_Master:candidate_login' %}"> Candidate </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-15" href="/"> Job Fair </a>
+                        </li>
+
+                        <a class="navbar-brand" href="/">
+                            <img src="{% static 'assets/images/pssc/14.png' %}" class="card-logo card-logo-dark" alt="logo dark" height="70" style="padding-left: 50px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                        &nbsp;
+                        <a class="navbar-brand ml-5" href="/">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-dark fs-15" alt="logo dark" height="70" style="padding-left: 30px;">
+                            <img src="{% static 'assets/images/pssc/15.png' %}" class="card-logo card-logo-light" alt="logo light" height="50 ">
+                        </a>
+                    </ul>
+
+                </div>
+
+          
+        </nav>
+        <!-- end navbar -->
+
+
+        <!-- Slides Only -->
+        <!-- With Controls -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="height: 700px">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/1.png' %}" alt="First slide" >
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/2.png' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/3.png' %}" alt="Third slide">
+                </div>
+                <div class="carousel-item " style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/4.png' %}" alt="First slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/5.png' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/6.png' %}" alt="Third slide">
+                </div>
+                <div class="carousel-item " style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/7.png' %}" alt="First slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/8.png' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/9.png' %}" alt="Third slide">
+                </div>
+                <div class="carousel-item " style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/10.png' %}" alt="First slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/11.png' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item " style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/12.png' %}" alt="First slide">
+                </div>
+                <div class="carousel-item" style="height: 700px;">
+                    <img class="d-block img-fluid mx-auto" src="{% static 'assets/images/pssc/13.png' %}" alt="Second slide">
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card crm-widget">
+                            <div class="card-body p-0">
+                                <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 g-0">
+
+                                    <div class="col">
+                                        <div class="py-4 px-3">
+                                            <h5 class="text-muted text-uppercase fs-13">Opportunities<i
+                                                    class="ri-arrow-up-circle-line text-success fs-18 float-end align-middle"></i>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="ri-space-ship-line display-6 text-muted"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h2 class="mb-0"><span class="counter-value"
+                                                            >0</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-md-0 py-4 px-3">
+                                            <h5 class="text-muted text-uppercase fs-13">Active Jobs<i
+                                                    class="ri-arrow-up-circle-line text-success fs-18 float-end align-middle"></i>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="ri-exchange-dollar-line display-6 text-muted"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h2 class="mb-0"><span class="counter-value"
+                                                        >0</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-md-0 py-4 px-3">
+                                            <h5 class="text-muted text-uppercase fs-13">Industries<i
+                                                    class="ri-arrow-down-circle-line text-danger fs-18 float-end align-middle"></i>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="ri-pulse-line display-6 text-muted"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h2 class="mb-0"><span>{{IP}}</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-lg-0 py-4 px-3">
+                                            <h5 class="text-muted text-uppercase fs-13">Available Candidate <i
+                                                    class="ri-arrow-up-circle-line text-success fs-18 float-end align-middle"></i>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="ri-trophy-line display-6 text-muted"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h2 class="mb-0"><span class="counter-value"
+                                                            >0</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col">
+                                        <div class="mt-3 mt-lg-0 py-4 px-3">
+                                            <h5 class="text-muted text-uppercase fs-13">Training Partner <i
+                                                    class="ri-arrow-down-circle-line text-danger fs-18 float-end align-middle"></i>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="ri-service-line display-6 text-muted"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h2 class="mb-0"><span>{{TP}}</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col -->
+                                </div><!-- end row -->
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h1 class="mb-3 ff-secondary fw-semibold lh-base">About Us</h1>
+                            <!-- <p class="text-muted">To achieve this, it would be necessary to have uniform grammar,
+                                pronunciation and more common words. If several languages coalesce the grammar</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+                                <!-- <h5 class="fs-18">Geolocation</h5> -->
+                                <p>Power Sector Skills Council (PSSC) is a Not‐for‐Profit Organization, registered under the Indian Companies Act, 1956.
+                                    The Council has been promoted by Ministry of Power (MoP) through Central Electricity Authority (CEA), Ministry 
+                                    of New and Renewable Energy (MNRE) and Indian Electrical & Electronics Manufacturers Association (IEEMA)
+                                    with necessary support by National Skill Development Corporation (NSDC).To explore our website please 
+                                    visit https://www.psscindia.org
+                                    PSSC Job Portal is specifically designed for Power sector. It is digital platform to bridge the gap between skilled resource & 
+                                    Industry’s demand. It connects jobseekers and recruiters by accurately matching candidate’s profile to relevant job opening 
+                                    through an advanced 2-way matching technology. It focuses on the entire career growth of candidates including career counselling, 
+                                    skill training, placement assistance & upskilling in their domain.</p>
+                                <br>
+                                <button class="btn btn-primary"> Visit About Us</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+                                <img src="https://thesightnews.com/wp-content/uploads/2022/07/converting-about-us-page.jpg"
+                                    width="100%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h1 class="mb-3 ff-secondary fw-semibold lh-base"> Industry Partner</h1>
+                            <p class="text-muted">To achieve this, it would be necessary to have uniform grammar,
+                                pronunciation and more common words. If several languages coalesce the grammar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+                                <img src="https://www.ics-shipping.org/wp-content/uploads/2022/11/industry-partner-820x420.jpg"
+                                    width="100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+
+                                <P>An industrial partnership brings together employers across an industry sector to lead
+                                    the development of skills, with a focus on growth and competitiveness. Industry
+                                    makes collaborate with training partner and training partner make requirements for
+                                    the industry and provide them a developer in the contract based or permanent based.
+                                </P>
+                                <br>
+                                <button class="btn btn-primary" href="industry-partner.html"> Visit Industry
+                                    Partner</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- start review -->
+        <section class="section bg-primary" id="reviews">
+            <div class="bg-overlay bg-overlay-pattern"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="text-center">
+                            <div>
+                                <i class="ri-double-quotes-l text-success display-3"></i>
+                            </div>
+                            <h4 class="text-white mb-5"><span class="text-white">19k</span>+ Satisfied clients</h4>
+
+                            <!-- Swiper -->
+                            <div class="swiper client-review-swiper rounded" dir="ltr">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="row justify-content-center">
+                                            <div class="col-10">
+                                                <div class="text-white-50">
+                                                    <p class="fs-20 ff-secondary mb-4">" I am givng 5 stars. Theme is
+                                                        great and everyone one stuff everything in theme. Future request
+                                                        should not affect current
+                                                        state of theme. "</p>
+
+                                                    <div>
+                                                        <h5 class="text-white">gregoriusus</h5>
+                                                        <p>- Skote User</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end slide -->
+                                    <div class="swiper-slide">
+                                        <div class="row justify-content-center">
+                                            <div class="col-10">
+                                                <div class="text-white-50">
+                                                    <p class="fs-20 ff-secondary mb-4">" Awesome support. Had few issues
+                                                        while setting up because of my device, the support team helped
+                                                        me fix them up in a day.
+                                                        Everything looks clean and good. Highly recommended! "</p>
+
+                                                    <div>
+                                                        <h5 class="text-white">GeekyGreenOwl</h5>
+                                                        <p>- Skote User</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end slide -->
+                                    <div class="swiper-slide">
+                                        <div class="row justify-content-center">
+                                            <div class="col-10">
+                                                <div class="text-white-50">
+                                                    <p class="fs-20 ff-secondary mb-4">" Amazing template, Redux store
+                                                        and components is nicely designed.
+                                                        It's a great start point for an admin based project. Clean Code
+                                                        and good documentation. Template is
+                                                        completely in React and absolutely no usage of jQuery "</p>
+
+                                                    <div>
+                                                        <h5 class="text-white">sreeks456</h5>
+                                                        <p>- Veltrix User</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end slide -->
+                                </div>
+                                <div class="swiper-button-next bg-white rounded-circle"></div>
+                                <div class="swiper-button-prev bg-white rounded-circle"></div>
+                                <div class="swiper-pagination position-relative mt-2"></div>
+                            </div>
+                            <!-- end slider -->
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end review -->
+
+
+
+        <section class="section" id="services">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h1 class="mb-3 ff-secondary fw-semibold lh-base"> Trainig Partner</h1>
+                            <p class="text-muted">To achieve this, it would be necessary to have uniform grammar,
+                                pronunciation and more common words. If several languages coalesce the grammar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+                                <img src="{% static 'assets/images/vietnamese-strategy-presentation-teamwork-aged_1262-2156.jpg' %}"
+                                    width="100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex p-3">
+                            <div class="flex-grow-1">
+                                <!-- <h5 class="fs-18">Geolocation</h5> -->
+                                <P>The main goal of a Training partner is to allocate and provide the candidate to the
+                                    industry partner as per their requirements and vacancy position. Also, the training
+                                    partner manages their training center in every place. so industry partners get
+                                    resources and candidates easily. Industry makes registration in training and
+                                    placement portal so and gives them vacancies </P>
+                                <br>
+                                <button class="btn btn-primary" href="training-partner.html"> Visit Training
+                                    Partner</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+        <!-- start counter -->
+        <section class="py-5 position-relative bg-light">
+            <div class="container">
+                <div class="row text-center gy-4">
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="100">0</span>+</h2>
+                            <div class="text-muted">Projects Completed</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="24">0</span></h2>
+                            <div class="text-muted">Win Awards</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="20.3">0</span>k</h2>
+                            <div class="text-muted">Satisfied Clients</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="50">0</span></h2>
+                            <div class="text-muted">Employees</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end counter -->
+
+        <!-- start Work Process -->
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h3 class="mb-3 fw-semibold">Our Work Process</h3>
+                            <p class="text-muted mb-4 ff-secondary">In an ideal world this website wouldn’t exist, a
+                                client would
+                                acknowledge the importance of having web copy before the Proin vitae ipsum vel ex
+                                finibus semper design starts.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row text-center">
+                    <div class="col-lg-4">
+                        <div class="process-card mt-4">
+                            <div class="process-arrow-img d-none d-lg-block">
+                                <img src="{% static 'assets/images/landing/process-arrow-img.png' %}" alt="" class="img-fluid">
+                            </div>
+                            <div class="avatar-sm icon-effect mx-auto mb-4">
+                                <div class="avatar-title bg-transparent text-success rounded-circle h1">
+                                    <i class="ri-quill-pen-line"></i>
+                                </div>
+                            </div>
+
+                            <h5>Tell us what you need</h5>
+                            <p class="text-muted ff-secondary">The profession and the employer and your desire to make
+                                your mark.</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-4">
+                        <div class="process-card mt-4">
+                            <div class="process-arrow-img d-none d-lg-block">
+                                <img src="{% static 'assets/images/landing/process-arrow-img.png' %}" alt="" class="img-fluid">
+                            </div>
+                            <div class="avatar-sm icon-effect mx-auto mb-4">
+                                <div class="avatar-title bg-transparent text-success rounded-circle h1">
+                                    <i class="ri-user-follow-line"></i>
+                                </div>
+                            </div>
+
+                            <h5>Get free quotes</h5>
+                            <p class="text-muted ff-secondary">The most important aspect of beauty was, therefore, an
+                                inherent part.</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-4">
+                        <div class="process-card mt-4">
+                            <div class="avatar-sm icon-effect mx-auto mb-4">
+                                <div class="avatar-title bg-transparent text-success rounded-circle h1">
+                                    <i class="ri-book-mark-line"></i>
+                                </div>
+                            </div>
+
+                            <h5>Deliver high quality product</h5>
+                            <p class="text-muted ff-secondary">We quickly learn to fear and thus automatically avoid
+                                potentially.</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end Work Process -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h3 class="mb-3 fw-semibold">Get In Touch</h3>
+                        <p class="text-muted mb-4 ff-secondary">In an ideal world this website wouldn’t exist, a
+                            client would
+                            acknowledge the importance of having web copy before the Proin vitae ipsum vel ex
+                            finibus semper design starts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="javascript:void(0);">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your first name"
+                                        id="firstNameinput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="lastNameinput" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your last name"
+                                        id="lastNameinput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="compnayNameinput" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter company name"
+                                        id="compnayNameinput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="+(91) 69451 45123"
+                                        id="phonenumberInput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="emailidInput" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="example@gamil.com"
+                                        id="emailidInput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="address1ControlTextarea" class="form-label">Address</label>
+                                    <input type="text" class="form-control" placeholder="Address"
+                                        id="address1ControlTextarea">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="citynameInput" class="form-label">City</label>
+                                    <input type="email" class="form-control" placeholder="Enter your city"
+                                        id="citynameInput">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="ForminputState" class="form-label">State</label>
+                                    <select id="ForminputState" class="form-select">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-lg-1">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </form>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7005.85758109997!2d77.188229!3d28.601913!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x91a57641ac13b4f0!2sPower%20Sector%20Skill%20Council!5e0!3m2!1sen!2sin!4v1664282319216!5m2!1sen!2sin"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <!-- start cta -->
+        <section class="py-5 bg-primary position-relative">
+            <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
+            <div class="container">
+                <div class="row align-items-center gy-4">
+                    <div class="col-sm">
+                        <div>
+                            <h4 class="text-white mb-0 fw-semibold">Want to become an NSDC training partner? Want to
+                                know about the courses offered? Or do you have any other query? Please let us know by
+                                completing the form below, and our representative will contact you shortly..</h4>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-sm-auto">
+                        <div>
+                            <a href="#" target="_blank" class="btn bg-gradient btn-priamry"><i></i>Get In Touch</a>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end cta -->
+
+        <!-- Start footer -->
+       
+        <!-- Start footer -->
+        <footer class="custom-footer bg-dark py-5 position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <div>
+                                <img src="{% static 'assets/images/pssc.png' %}" class="card-logo card-logo-dark" alt="logo dark"
+                                     style="background-color: aliceblue; padding: 10px; border-radius: 20px;" height="100">
+                            </div>
+                            <div class="mt-4 fs-13">
+                                <!--              <p>IPFIndeer customer dashbord</p> -->
+                                <p class="ff-secondary">Vidyut Rozgar Portal contains the industry partners and training partners for the candidates. 
+                                    It is working on providing skilled candidates and employment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 ms-lg-auto">
+                        <div class="row">
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Company</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'Home:PSSC_HOME' %}">Home</a></li>
+                                        <li><a href="#">About Us </a></li>
+                                        <li><a href="{% url 'Home:contact_us' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Partnership</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{% url 'IndustryPartner:industry_login' %}">Industry Partner</a></li>
+                                        <li><a href="{% url 'TrainingPartner:training_login' %}">Training Partner</a></li>
+                                        <li><a href="{% url 'Candidate_Master:candidate_login' %}">Candidate Login</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Support</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                      
+                                        <li><a href="pages-faqs.html">Email : mailto:test@gmail.com</a></li>
+                                        <li><a href="pages-faqs.html">Mobile No. : 876543217</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row text-center text-sm-start align-items-center mt-5">
+                    <div class="col-sm-7 offset-4">
+                          <p>
+                              © Copyright - 2022 All Rights Reserved by Power Sector Skill Council India
+                          </p> 
+                        
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+
+        <!-- end footer -->
+
+    </div>
+    <!-- end layout wrapper -->
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'assets/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+
+    <!--Swiper slider js-->
+    <script src="{% static 'assets/libs/swiper/swiper-bundle.min.js' %}"></script>
+
+    <!-- landing init -->
+    <script src="{% static 'assets/js/pages/landing.init.js' %}"></script>
+</body>
+
+
+
+
+</html>

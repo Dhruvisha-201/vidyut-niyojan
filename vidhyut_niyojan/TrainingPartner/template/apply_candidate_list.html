@@ -1,0 +1,95 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Training Center</div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+
+                <div class="card  card-box">
+                    {% for message in messages %} {% if trainingcenterdelete in message %}
+                    <div class="message">
+                        <center>
+                            <h4>
+                                <p style="color:red"></p>
+                            </h4>
+                        </center>
+                        <a class="del-msg">&times;</a>
+                    </div>
+                    {% endif %} {% endfor %}
+                    {% for message in messages %} 
+                        {% if 'appliedcadid' in message %}
+                            <h4>
+                                <p style="color:red"></p>
+                            </h4>
+                        {% endif %} 
+                    {% endfor %}
+                    <div class="card-body">
+                        <div class="table-wrap">
+                            <form method="post" action="{% url 'TrainingPartner:apply_candid_job' %}">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                    <td><input type="hidden" name="jobb_id" value="{{all_job.id}}"></td>
+
+
+                                    <table class="table display product-overview mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th>ID </th> -->
+                                                <th></th>
+                                                <th>Training Center Name</th>
+                                                <th>Candidate Name</th>
+                                                <th>Candidate Email</th>
+                                                <th>Designation</th>
+                                                <th>Qualification</th>
+                                                <!-- <th>Action</th> -->
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                            {% for val in final_candid %}
+                                            <tr>
+                                                <td><input type="checkbox"  name="trainingcenter" value="{{val.Candidate_Email}}" ></td>
+                                                <!-- <td>{{val.id}}</td> -->
+                                                
+                                                <td>{{val.Training_Center_Id.Training_Center_Name}}</td>
+                                                <td>{{val.FirstName}}&nbsp;{{val.LastName}}</td>
+                                                <td>{{val.Candidate_Email}}</td>
+                                                <td>{{val.Job_Name}}</td>
+                                                <td>{{val.Qualification}}</td>
+                                            </tr>
+                                            {% endfor %}
+
+
+                                        </tbody>
+
+                                    </table>
+                                    <button type="submit" class="btn btn-primary " >Apply Candidate</button>
+                                    <a href="/Tp/view_job_post/" class="btn btn-primary">All Job Post</a>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+{% endblock %}

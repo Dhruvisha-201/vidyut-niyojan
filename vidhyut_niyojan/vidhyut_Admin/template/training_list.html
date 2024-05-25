@@ -1,0 +1,157 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content  %}
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">TRAINING PARTNER</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="#">Home</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">TRAINING PARTNER</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- start new student list -->
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card  card-box">
+                                {% for message in messages %}
+                                    {%if "trainingaccept" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                           
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "trainingreject" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:red"> {{message}} </p> </h4></center>
+                                            
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "Trainingadd" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                           
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "trainingedit" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                            
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+                                    {% for message in messages %}
+                                    {%if "trainingdelete" in message.tags %}
+                                        <div class="message">
+                                            <center><h4><p style = "color:red"> {{message}} </p> </h4></center>
+                                            
+                                        </div>
+                                    {%endif%}
+                                    {% endfor %}
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="btn-group" style="float: right; margin-right: 2%;margin-top: 10px;">
+                                        <a href="/ad/add_trainig/" id="addRow" class="btn btn-primary">
+                                            Add New Training Partner <i style="color: #fff;" class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table class="table display product-overview mb-30" id="support_table">
+                                                <thead>
+                                                    <tr>
+                                                       
+                                                        <th>TP<br> Registration<br> Number</th>
+                                                        <th>Training Partner Name</th>
+                                                        <th>Legal Entity Name</th>
+                                                        <th>Contact Pereson Name</th>
+                                                        <th>Contact Person Emial</th>
+                                                        <th>Contact Person Phone</th>
+                                                        <!-- <th>Alternate Email</th> -->
+                                                        <!-- <th>Address</th> -->
+                                                        <th>Accept / Reject</th>
+                                                        <th>Action</th>
+                                                        <!-- <th>Edit</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for i in training %}
+                                                    {% if i.IsDeleted == 0 %}
+                                                    <tr>
+                                                     
+                                                        <td>{{i.Nsdc_Registration_Number}}</td>
+                                                        <td>{{i.Training_Partner_Name}}</td>
+                                                        <td>{{i.Legal_Entity_Name}}</td>
+                                                        <td>{{i.Contact_Person_Name}}</td>
+                                                        <td>{{i.Contact_Person_Email}}</td>
+                                                        <td>{{i.Contact_Person_Phone}}</td>
+                                                        <!-- <td>{{i.Alternate_Email}}</td> -->
+                                                        <!-- <td>{{i.Address}}</td> -->
+                                                     
+                                                        <td>
+                                                            {% if i.IsActive == 0 %}
+                                                            <a href="/ad/trainingAccept/{{i.id}}" class="tblEditBtn">
+                                                                <i class="fa fa-check"></i>
+                                                            </a>
+                                                            <a href="/ad/trainingreject/{{i.id}}" class="tblDelBtn">
+                                                                <i class="fa fa-times"></i>
+                                                            </a>
+                                                            {% elif i.IsActive == 1 %}
+
+                                                            <a class="tblEditBtn">
+                                                                <i class="fa fa-REQUEST">A c c e p t e d</i>
+                                                            </a>
+                                                            {% elif i.IsActive == 2 %}
+
+                                                            <a class="tblDelBtn">
+                                                                <i class="fa fa-REQUEST"> R e j e c t e d</i>
+                                                            </a>
+                                                            
+                                                            {% endif %}
+                                                         
+                                                           </td>
+                                                        <td>
+                                                            <a href="/ad/edit_training/{{i.id}}/" class="tblEditBtn">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a href="/ad/delete_training/{{i.id}}/" class="tblDelBtn">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end new student list -->
+                </div>
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page container -->
+       {% endblock %}
+

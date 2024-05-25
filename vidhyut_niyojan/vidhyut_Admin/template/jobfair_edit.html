@@ -1,0 +1,87 @@
+{% extends 'admin_header.html' %} {% load static %} {% block content %}
+<!-- end sidebar menu -->
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">JOB FAIR</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="#">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">JOB FAIR</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- start new student list -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Edit Industry</header>
+                    </div>
+                    <div class="card-body " id="bar-parent">
+                        <form action="/ad/edit_jobfair/{{edit_job.id}}/" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Job Title :</label>
+                                        <input type="text" name="job_title" value="{{edit_job.job_title}}" class="form-control" id="simpleFormEmail" placeholder="Enter Job Title" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Job Description :</label>
+                                        <input type="text" name="job_description" value="{{edit_job.job_description}}" class="form-control" id="simpleFormEmail" placeholder="Enter Job Description" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Opening For :</label>
+                                        <input type="text" name="opening_for" value="{{edit_job.opening_for}}" class="form-control" id="simpleFormEmail" placeholder="Enter Opening For" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Required Skills :</label>
+                                        <input type="text" name="reqiured_Skill" value="{{edit_job.reqiured_Skill}}" class="form-control" id="simpleFormEmail" placeholder="Enter Required Skills" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Location :</label>
+                                        <input type="text" name="location" value="{{edit_job.location}}" class="form-control" id="simpleFormEmail" placeholder="Enter Location" style="border-radius: 50px;">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="simpleFormEmail">Job Cureent Date :</label>
+                                    <input type="date" name="job_cureentdate" value="{{edit_job.job_cureentdate}}" class="form-control" id="simpleFormEmail" placeholder="Enter Job Cureent Date" style="border-radius: 50px;">
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="col-md-3 offset-5">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="/ad/jobfairlist/" class="btn btn-danger">Cancel<br></a>
+                            </div>
+                            <br>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+{% endblock %}

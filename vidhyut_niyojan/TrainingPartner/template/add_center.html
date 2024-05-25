@@ -1,0 +1,164 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper ">
+    <div class="page-content ">
+        <div class="page-bar ">
+            <div class="page-title-breadcrumb ">
+                <div class=" pull-left ">
+                    <div class="page-title ">Training Center</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+        <div class="row ">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="card card-box ">
+                    <div class="card-head ">
+                        <header>Add New Training Center</header>
+                    </div>
+                    <div class="card-body " id="bar-parent ">
+                        <form method="post" class="post-form" action="/Tp/add_training_center/" enctype="multipart/form">
+                            {% csrf_token %}
+                            <div class="row ">
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail " >Training Center Name :<label class="required" ></label></label>
+                                        <input type="text" name="Training_Center_Name" class="form-control " placeholder="Enter Training Center Name" style="border-radius: 50px; " required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Contact Name  :<label class="required" ></label></label>
+                                        <input type="text" name="Contact_Name" class="form-control " placeholder="Enter contact Name" style="border-radius: 50px; " required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Contact Email  :<label class="required" ></label></label>
+                                        <input type="email" name="Contact_Email" class="form-control " placeholder="Enter Contact Email" style="border-radius: 50px; " required>
+                                    </div>
+                                </div>
+                                {% for message in messages %} {%if "log" in message.tags %}
+                                <div class="message">
+                                    <center>
+                                        <h4>
+                                            <p style="color:red"> {{message}} </p>
+                                        </h4>
+                                    </center>
+                                    <!-- <a href="#" class="del-msg">&times;</a> -->
+                                </div>
+                                {%endif%} {% endfor %}
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Contact No  :<label class="required" ></label></label>
+                                        <input type="number" name="Contact_No" class="form-control " id="simpleFormEmail " placeholder="Enter Contact Number" style="border-radius: 50px; " onKeyPress="if(this.value.length==10) return false;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Address1 :<label class="required" ></label></label>
+                                        <input type="text" name="Address1" class="form-control " placeholder="Enter Address" style="border-radius: 50px; " required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Address2 :<label class="required" ></label></label>
+                                        <input type="text" name="Address2" class="form-control " placeholder="Enter Address" style="border-radius: 50px; " required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">State: <label class="required" ></label></label><br>
+                                        <div>
+                                            <select id="selectstate" onchange="myFunction()" style="border-radius: 50px; " name="state" class="form-select">
+                                                {% for x in selectstate %}
+                                                <option  value="{{x.id}}">{{x.State_Name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">City :<label class="required" ></label></label>
+                                        <select id="statewisecity" name="city" style="border-radius: 50px; " placeholder="Select City" class="form-select">
+                                        {% for val in city %}
+                                            <option>{{val.City_Name}}</option>
+                                        {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail ">Pin Code  :<label class="required" ></label></label>
+                                        <input type="number" name="Pin_Code" class="form-control " placeholder="Enter Pin code" style="border-radius: 50px; " onKeyPress="if(this.value.length==6) return false;" required>
+                                    </div>
+                                </div>
+                                
+
+
+                            </div>
+                            <div class="col-md-3 offset-5">
+                                <button type="submit " class="btn btn-primary ">Submit</button>
+                                <a href="{% url 'TrainingPartner:center_list' %}"><button type="button"
+                                    class="btn btn-danger">Cancel</button></a>
+                            </div>
+                        </form>
+                    </div>
+                    <script>
+                        function myFunction() {
+                            var stateinfo = document.getElementById("selectstate").value;
+
+                            console.log(stateinfo);
+                            output = ""
+                            $.ajax({
+                                type: "POST",
+                                url: '/Tp/get_city_ajax/',
+                                data: {
+                                    'stateinfo': stateinfo,
+                                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                                },
+                                success: function(response) {
+                                    $("#statewisecity").empty();
+                                    console.log(response.statewisecity)
+
+                                    x = response.statewisecity
+
+                                    var select = document.getElementById('statewisecity');
+                                    var option;
+                                    for (var i = 0; i < x.length; i++) {
+
+
+
+                                        option = document.createElement('option');
+                                        option.text = x[i]["City_Name"];
+                                        select.add(option);
+
+
+                                    }
+
+
+                                },
+                            });
+
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+
+{% endblock %}

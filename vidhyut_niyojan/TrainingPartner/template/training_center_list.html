@@ -1,0 +1,117 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Training Center</div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+        {% for message in messages %} 
+                    {% if "cen_delete" in message.tags %}
+                        <div class="message">
+                            <center><h4><p style="color:red"> {{message}} </p></h4></center>
+                            
+                        </div>
+                    {% endif %} 
+                    {% endfor %}
+                  
+
+                    {% for message in messages %}
+                    {%if "updatedcenter" in message.tags %}
+                        <div class="message">
+                            <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                          
+                        </div>
+                    {%endif%}
+                        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <a href="/Tp/add_training_center/" class="tblAddBtn"> <button class="btn btn-primary p w-10" type="submit" style="float: right;">+ Add New Center</button> </a><br><br>
+                <div class="card  card-box">
+                    <br>
+                    <br> 
+                    
+                    <div class="card-body">
+                        <div class="table-wrap">
+
+                            <div class="table-responsive">
+                                <table class="table display product-overview mb-30" id="support_table">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Training Center Name</th>
+                                            <th>Address</th>
+                                            <th>State</th>
+                                            <th>City</th>
+                                            <th>PinCode</th>
+                                            <th>Contact Name</th>
+                                            <th>Contact Email</th>
+                                            <th>Contact No</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for val in partner_center_list %}
+                                        <tr>
+                                           
+                                            <td>{{val.Training_Center_Name}}</td>
+                                            <td>{{val.Address1}}</td>
+                                           
+                                            <td>{{val.state.State_Name}}</td>
+                                            <td>{{val.City.City_Name}}</td>
+                                            <td>{{val.Pin_Code}}</td>
+                                            <td>{{val.Contact_Name}}</td>
+                                            <td>{{val.Contact_Email}}</td>
+                                            <td>{{val.Contact_No}}</td>
+                                            <td>
+                                                <a href="/Tp/edit_center/{{val.id}}/" class="tblEditBtn">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/Tp/delete_center/{{val.id}}/" class="tblDelBtn">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                        {% empty %}
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>No Data Found</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+{% endblock %}

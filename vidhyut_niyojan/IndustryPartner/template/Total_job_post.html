@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Total Job Accepted</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- start new student list -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <br>
+                      
+                        <br>
+                        <div class="card-body ">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display product-overview
+                                        mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Job Name</th>
+                                                <th>Job Type </th>
+                                                <th>Job Salary</th>
+                                                <th>Job Description </th>
+                                                <th>Requirements</th>
+                                                <th>Number Of Requirements</th>
+                                                <th>Experience</th>
+                                                <th>Qualification</th>
+                                               
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for x in all_job %}
+                                            
+                                            
+                                            <tr>
+                                                <td>{{x.Job_Name}}</td>
+                                                <td>{{x.Job_type}}</td>
+                                                <td>{{x.Job_salary}}</td>
+                                                <td>{{x.Job_Description}}</td>
+                                                <td>{{x.Requirements}}</td>
+                                                <td>{{x.Number_Of_Requirements}}</td>
+                                                <td>{{x.Experience}}</td>
+                                                <td>{{x.Qualification}}</td>
+                                                
+                                                
+                                            </tr>
+                                          
+                                                
+                                            
+                                            {% endfor %}
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

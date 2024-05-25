@@ -1,0 +1,84 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Job Post</div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card  card-box">
+                    <br>
+                    <br> 
+                    <div class="card-body">
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <table class="table display product-overview mb-30" id="support_table">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>ID </th> -->
+                                            <th>Job Name</th>
+                                            <th>Job Type</th>
+                                            <th>Job Salary</th>
+                                            <th>Number of Requirements</th>
+                                            <th>Requirements</th>
+                                            <th>Job Add Date</th>
+                                            <th>Experience</th>
+                                            <th>Qualification</th>
+                                            <th>Action</th>
+                                         
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for val in job_post %}
+                                        <tr>
+                                            <!-- <td>{{val.id}}</td> -->
+                                            <td>{{val.Job_Name}}</td>
+                                            <td>{{val.Job_type}}</td>
+                                            <td>{{val.Job_salary}}</td>
+                                            <td>{{val.Number_Of_Requirements}}</td>
+                                            <td>{{val.Requirements}}</td>
+                                            <td>{{val.Job_Add_Date}}</td>
+                                            <td>{{val.Experience}}</td>
+                                            <td>{{val.Qualification}}</td>
+                                        
+                                            <td>
+                                                <a href="/Tp/job_details/{{val.id}}/" class="tblEditBtn">
+                                                    <button class="btn btn-primary">Read More</button>
+                                                </a>
+                                           
+                                                <a href="{% url 'TrainingPartner:view_applied_candidate' id=val.id %}" class="tblDelBtn">
+                                                    <button class="btn btn-primary">View Applied Candidate</button>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Candidate List</div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card  card-box">
+                    <br>
+                    <br> 
+                    {% for message in messages %} 
+                    {% if "updatedcandidate" in message.tags %}
+                    <div class="message">
+                        <center>
+                            <h4>
+                                <p style="color:green">{{message}}</p>
+                            </h4>
+                        </center>
+                       
+                    </div>
+                    
+                    {% endif %} 
+                    {% endfor %}
+                    {% for message in messages %} {% if "cadidadd" in message.tags %}
+                    <div class="message">
+                        <center>
+                            <h4>
+                                <p style="color:Green">{{message}}</p>
+                            </h4>
+                        </center>
+                    </div>
+                    
+                    {% endif %} 
+                    {% endfor %}
+                    {% for message in messages %} 
+                    {% if "cadid" in message.tags %}
+                    <div class="message">
+                        <center><h4><p style="color:green">{{message}}</p></h4></center>
+                    </div>
+                    
+                    {% endif %} 
+                    {% endfor %}
+
+                    {% for message in messages %}
+                    {%if "candiddelete" in message.tags %}
+                        <div class="message">
+                            <center><h4><p style = "color:red (209, 27, 7)"> {{message}} </p> </h4></center>
+                          
+                        </div>
+                    {%endif%}
+                        {% endfor %}
+
+                    <div class="card-body">
+                        <div class="table-wrap">
+                            <a href="/Tp/add_candidate/" class="tblAddBtn"> <button class="btn btn-primary p w-10" style="float: right;" type="submit">+ Add New Candidate</button> </a><br><br>
+
+                            <div class="table-responsive">
+
+                                <table class="table display product-overview mb-30" id="support_table">
+                                    <!-- {% for message in messages %} {% if candiddelete in message %}
+                                    <div class="message">
+                                        <center>
+                                            <h4>
+                                                <p style="color:red"></p>
+                                            </h4>
+                                        </center>
+                                        <a class="del-msg">&times;</a>
+                                    </div>
+                                    
+                                    {% endif %} {% endfor %} -->
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>ID </th> -->
+                                            <th>Training Center Name</th>
+                                            <th>Job Role</th>
+                                            <th>Name</th>
+                                            <th>Gender</th>
+                                            <th>Candidate Email</th>
+                                            <th>Phone no</th>
+                                            <th>Address</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for val in partner_center_list %}
+                                        <tr>
+                                            <!-- <td>{{val.id}}</td> -->
+                                            <td>{{val.Training_Center_Id.Training_Center_Name}}</td>
+                                            <td>{{val.FirstName}}&nbsp;{{val.LastName}}</td>
+                                            <td>{{val.Gender}}</td>
+                                            <td>{{val.Candidate_Email}}</td>
+                                            <td>{{val.Course_Id.CourseName}}</td>
+                                            <td>{{val.Phone_no}}</td>
+                                            <td>{{val.Address1}},{{val.State_Id.State_Name}},{{val.City_Id.City_Name}},{{val.pincode}}</td>
+                                            <td>
+                                                <a href="/Tp/edit_candidate/{{val.id}}/" class="tblEditBtn">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/Tp/delete_candidate/{{val.id}}/" class="tblDelBtn">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                        {% empty %}
+
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>No Data Available</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                           
+
+                                        {% endfor %}
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end new student list -->
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+{% endblock %}

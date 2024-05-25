@@ -1,0 +1,90 @@
+{% extends 'CM_header.html' %} {% load static %} {% block content %}
+
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+<!--                            <div class=" pull-left">-->
+<!--                                <div class="page-title">Tabs</div>-->
+<!--                            </div>-->
+<!--                            <ol class="breadcrumb page-breadcrumb pull-right">-->
+<!--                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"-->
+<!--                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>-->
+<!--                                </li>-->
+<!--                                <li class="active">Tabs</li>-->
+<!--                            </ol>-->
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <div class="card-head">
+<!--                                <header>Material Design Tabs </header>-->
+                            </div>
+                            <div class="card-body ">
+                                
+                                <div class="mdl-tabs ">
+                                    <div class="mdl-tabs__tab-bar">
+                                        <a href="/cm/resume_build/" class="mdl-tabs__tab is-active">Personal Detail</a>
+                                        <a href="/cm/add_skill/" class="mdl-tabs__tab">Skils</a>
+                                        <a href="/cm/add_edu/" class="mdl-tabs__tab">Educations</a>
+                                        <a href="/cm/add_family/" class="mdl-tabs__tab">Familiy</a>
+                                        <a href="/cm/add_exp/" class="mdl-tabs__tab">Expericece</a>
+                                    </div>
+                                    <div class="row">
+                                        
+                                    <div class="mdl-tabs__panel p-t-20"  >
+                                        <div class="row">
+                                            <form method="POST" action="/cm/add_edu/">
+                                                {% csrf_token %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>University</label>
+                                                        <input type="text" class="form-control" name="University"
+                                                            placeholder="Enter your name " value="{{education.University}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Paasing Year</label>
+                                                        <input type="number" class="form-control" name="Passing_year"
+                                                            placeholder="Enter your Passing Year " value="{{education.Passing_year}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Persentage</label>
+                                                        <input type="number" class="form-control" name="Persentage"
+                                                            placeholder="Enter your Percentage" value="{{education.Persentage}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Any Post Graduation</label>
+                                                        <input type="text" class="form-control" name="Post_graduation"
+                                                            placeholder="Enter your name " value="{{education.Post_graduation}}" required>
+                                                    </div>
+                                                   
+                                                
+                                                </div>
+                                                
+                                                <div class="row">
+                                                <div class="col-md-1 offset-10 ">
+                                                    <a href="/cm/add_skill/" class="mdl-tabs__tab btn btn-primary" style="float:right"> < Previous</a>
+                                                 </div>
+                                                 <div class="col-md-1 ">
+                                                 <button type="submit" class="mdl-tabs__tab btn btn-primary">Next ></button></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- end page container -->
+      {% endblock %}

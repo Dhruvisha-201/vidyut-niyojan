@@ -1,0 +1,94 @@
+{% extends 'CM_header.html' %} 
+{% load static %} 
+{% block content %}
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Job Post</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- start new student list -->
+        <div class="card card-box">
+            <div class="card-head">
+                <header>Filter Job Post</header>
+            </div>
+            <div class="card-body " id="bar-parent">
+                <form action ="{% url 'IndustryPartner:Filter_candidate' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="simpleFormEmail"><b>Skill :</b></label>
+                                <input type="text" id ="statewisecity" name="city" style="width: 770px;   border-radius: 50px;" placeholder="Enter Your Skill" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="simpleFormEmail"><b>Keyword :</b></label>
+                                <input type="text" class="form-control" id="simpleFormEmail"
+                                    placeholder="ENter Your Keyword" style="border-radius: 50px;" name = "keyword"> 
+                            </div>
+                        </div>
+                        <center>
+                     
+                    </center>
+                    <center>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">Submit</button> 
+                            <!-- <a href="{% url 'IndustryPartner:search_candidate' %}"><button type="button" class="btn btn-danger">Show All Candidate</button><br></a> -->
+                        </div>
+                    </center>
+                    </div>
+                </form>
+            </div>
+        </div> 
+        <div class="row">
+            {% for x in job_post %}
+            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
+                <form method="POST" action="{% url 'Candidate_Master:job_details' id=x.id %}">
+                    {% csrf_token %}
+                    <div class="blogThumb">
+                        <div class="thumb-center"><img class="img-responsive" alt="user" src="{% static 'assets1/img/course/course1.jpg' %}"></div>
+                        <div class="course-box">
+                            <h4>{{x.Job_Name}}</h4>
+                            <div class="text-muted"><span class="m-r-10">{{x.Job_Add_Date}}</span>
+
+                            </div>
+                            <p><span><i class="ti-alarm-clock"></i> Type: {{x.Job_type}}</span></p>
+                            <p><span><i class="ti-user"></i> Requirement : {{x.Requirements}}</span></p>
+                            <p><span><i class="fa fa-graduation-cap"></i> Number of Requirements: {{x.Number_Of_Requirements}}</span></p>
+
+                            <button class="btn btn-primary" type="submit"> Read More</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+<div class="page-footer">
+    <div class="page-footer-inner"> 2022 &copy; UniQ Data Solution Private Limited
+        <!-- <a href="#" target="_top" class="makerCss">UniQdatasolution</a> -->
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+<!-- end footer -->
+</div>
+<!-- start js include path -->
+{% endblock %}

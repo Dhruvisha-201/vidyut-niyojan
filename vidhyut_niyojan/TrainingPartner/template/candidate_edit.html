@@ -1,0 +1,208 @@
+{% extends 'trainig_header.html' %} {% load static %} {% block content %}
+<!-- start page content -->
+<div class="page-content-wrapper ">
+    <div class="page-content ">
+        <div class="page-bar ">
+            <div class="page-title-breadcrumb ">
+                <div class=" pull-left ">
+                    <div class="page-title ">Candidate </div>
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+        <!-- start new student list -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="card card-box ">
+                    <div class="card-head ">
+                        <header>Candidate</header>
+                    </div>
+                    <div class="card-body " id="bar-parent ">
+                        <form method="POST"  class="post-form">
+                            {% csrf_token %}
+                            <div class="row ">
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>First Name :</label> {{form.FirstName|default:'none'}}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Last Name :</label> {{form.LastName|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Candidate Email :</label> {{form.Candidate_Email|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Phone no :</label> {{form.Phone_no|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Date Of Birth:</label> {{form.DOB|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+
+                                    <div class="form-group ">
+                                        <label for="simpleFormEmail"><b>Gender :&nbsp;&nbsp;&nbsp;&nbsp;  </b></label> {% if 'Female' == get_qu.Gender %}
+                                        <input type="radio" name="Gender" value="Male" ><label>Male</label>
+                                        <input type="radio" name="Gender" value="Female" checked>Female {% else %}
+                                        <input type="radio" name="Gender" value="Male" checked> Male
+                                        <input type="radio" name="Gender" value="Female" > Female {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Adharcard Number:</label> {{form.adhar_Number|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Qualification
+                                            :<label class="required"></label></label>
+                                        <select type="text" class="form-select" id="simpleFormEmail" placeholder="Enter required Qualification" style="border-radius:
+                                            50px;" name="Qualification"  required>
+                                           
+                                            <option value="10 to Below" {% if get_qu.Qualification == "Below 10"  %}selected{% endif %}>Below 10 </option>
+                                            <option value="10 pass" {% if get_qu.Qualification == "10 Pass"  %}selected{% endif %}>10 pass</option>
+                                            <option value="12 pass" {% if get_qu.Qualification == "12 Pass"  %}selected{% endif %}>12 pass</option>
+                                            <option value="ITI" {% if get_qu.Qualification == "ITI"  %}selected{% endif %}>ITI</option>
+                                            <option value="Diploma" {% if get_qu.Qualification == "Diploma"  %}selected{% endif %}>Diploma</option>
+                                            <option value="Graduate" {% if get_qu.Qualification == "Graduate"  %}selected{% endif %}>Graduate</option>
+                                            <option value="Post-Graduate" {% if get_qu.Qualification == "Post-Graduate"  %}selected{% endif %}>Post-Graduate</option>
+                                            <option value="Any" {% if get_qu.Qualification == "Any"  %}selected{% endif %}>Any</option>
+                                       
+                                        </select>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Course :</label>{{form.Course_Id|default:'none'}}
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Willing To
+                                            Relocate :<label class="required"></label></label>
+                                        <select type="text" class="form-select" id="simpleFormEmail" placeholder="Enter required willing
+                                            to relocate" value="{{get_qu.willing_to_relocate}}" style="border-radius:
+                                            50px;" name="willing_to_relocate" required>
+                                            <option value="Yes" {% if get_qu.willing_to_relocate == "Yes"  %}selected{% endif %}>Yes</option>
+                                            <option value="No" {% if get_qu.willing_to_relocate == "No"  %}selected{% endif %}>No</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Differently
+                                            Abled :<label class="required"></label></label>
+                                        <select type="text" class="form-select" id="simpleFormEmail" placeholder="Enter required
+                                            differently abled" value="{{edit_can.differently_abled}}" style="border-radius: 50px;" name="differently_abled" required>
+                                            <option value="Yes" {% if get_qu.differently_abled == "Yes"  %}selected{% endif %}>Yes</option>
+                                            <option value="No" {% if get_qu.differently_abled == "No"  %}selected{% endif %}>No</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                               
+                                
+                                
+                                
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="simpleFormEmail">Training
+                                            Type :<label class="required"></label></label>
+                                        <select type="text" class="form-select" id="simpleFormEmail" placeholder="Enter required Training
+                                            Type" style="border-radius: 50px;" name="Training_Type" value="{{get_qu.Training_Type}}" required>
+                                            <option value="Goverment" {% if get_qu.Training_Type == "Goverment"  %}selected{% endif %}>Goverment
+                                            </option>
+                                            <option value="Non-Government"  {% if get_qu.Training_Type == "Non-Government"  %}selected{% endif %}>Non-Government</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">   
+                                        <label>Job Role:</label> {{form.Job_role|default:'none'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Training Scheme Name :</label>{{form.Training_Scheme_Name|default:'none'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Training status:</label> {{form.Training_Status|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Placed Status :</label> {{form.Placed_Status|default:'none'}}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group">
+                                        <label>Address1 :</label> {{form.Address1|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group">
+                                        <label>Address2 :</label> {{form.Address2|default:'none'}}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-sm-6 ">
+                                    <div class="form-group ">
+                                        <label>Pincode  :</label> {{form.pincode|default:'none'}}
+                                    </div>
+                                </div>
+                            
+                            
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>State :</label>{{form.State_Id|default:'none'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>City :</label>{{form.City_Id|default:''}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3 offset-5">
+                                    <button type="submit" class="btn btn-primary ">Submit</button>
+                                    <a href="{% url 'TrainingPartner:candidate_list' %}"><button type="button"
+                                            class="btn btn-danger">Cancel</button></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end new student list -->
+</div>
+</div>
+<!-- end page content -->
+</div>
+<!-- end page container -->
+<!-- start footer -->
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Job Posting</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- start new student list -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <br>
+                      
+                        <br>
+                        {% for message in messages %}
+                        {%if "jobpostdeleted" in message.tags %}
+                            <div class="message">
+                                <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                <a href="#" class="del-msg">&times;</a>
+                            </div>
+                        {%endif%}
+                        {% endfor %}
+                        <a href="{% url 'IndustryPartner:job_posting_add' %}"><button type="button" class="btn btn-primary" style="float:right;margin-right: 2%; "> + Add New Job Post</button></a>
+                        <div class="card-body ">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display product-overview
+                                        mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Job Name</th>
+                                                <th>Job type</th>
+                                                <th>Job salary</th>
+                                                <th>Job Description</th>
+                                                <th>Requirements</th>
+                                                <th>Number Of Requirements</th>
+                                                <th>Job Add Date</th>
+                                                <th>Job Ending Date</th>
+                                                <th>Applied Candidate</th>
+                                                <th>Update</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for x in all_job %}
+                                        
+                                            
+                                            <tr>
+                                                <td>{{x.Job_Name}}</td>
+                                                <td>{{x.Job_type}}</td>
+                                                <td>{{x.Job_salary}}</td>
+                                                <td>{{x.Job_Description}}</td>
+                                                <td>{{x.Requirements}}</td>
+                                                <td>{{x.Number_Of_Requirements}}</td>
+                                                <td>{{x.Job_Add_Date}}</td>
+                                                <td>{{x.Job_Ending_Date}}</td>
+                                                <td align="center"><a href="{% url 'IndustryPartner:applied_candidate' id=x.id %}"> <i class="fa fa-users"></i></a></td>
+                                                <td align="center"><a href="{% url 'IndustryPartner:job_posting_update' id=x.id %}"> <i class="fa fa-edit"></i></a></td>
+                                                <td align="center"><a href="{% url 'IndustryPartner:job_posting_delete' id=x.id %}"><i class="fa fa-trash"></i></a></td>
+                                                
+                                            </tr>
+                                            {% empty %}
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>No Data Avilable</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                            
+                                            {% endfor %}
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

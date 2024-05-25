@@ -1,0 +1,49 @@
+{% extends 'CM_header.html' %}
+{%load static%}
+{% block content %}
+
+			<!-- start page content -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-bar">
+						<div class="page-title-breadcrumb">
+							<div class=" pull-left">
+								<div class="page-title">Dashboard</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="row">
+						{% for x in job_post %}
+						<div class="col-lg-3 col-md-6 col-12 col-sm-6">
+							<form method="POST" action="{% url 'Candidate_Master:job_details' id=x.id %}">
+								{% csrf_token %}
+								<div class="blogThumb">
+									<div class="thumb-center"><img class="img-responsive" alt="user" src="{% static 'assets1/img/course/course1.jpg' %}"></div>
+									<div class="course-box">
+										<h4>{{x.Job_Name}}</h4>
+										<div class="text-muted"><span class="m-r-10">{{x.Job_Add_Date}}</span>
+
+										</div>
+										<p><span><i class="ti-alarm-clock"></i> Type: {{x.Job_type}}</span></p>
+										<p><span><i class="ti-user"></i> Requirement : {{x.Requirements}}</span></p>
+										<p><span><i class="fa fa-graduation-cap"></i> Number of Requirements: {{x.Number_Of_Requirements}}</span></p>
+
+										<button class="btn btn-primary" type="submit"> Read More</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						{% empty %}
+						<center style="color: red;"><h2>No Job Post Avilable</h2></center>
+						{% endfor %}
+					</div>
+
+				</div>
+			</div>
+			<!-- end page content -->
+			
+		</div>
+		<!-- end page container -->
+		{% endblock %}

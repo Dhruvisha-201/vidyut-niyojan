@@ -1,0 +1,145 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Dashboard</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- start widget -->
+                    <div class="state-overview">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-green">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text"><a href="/ad/industry_list/" style="color:white">TOTAL INDUSTRY PARTNER</a></span>
+                                        <span class="info-box-number">{{industry}}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-yellow">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text"><a href="/ad/training_list/" style="color:white">TOTAL TRAINING PARTNER </a></span>
+                                        <span class="info-box-number">{{training}}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-pink">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text"><a href="/ad/list_center/" style="color:white">TOTAL TRAINING CENTER </a></span>
+                                        <span class="info-box-number">{{center}}</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-pink">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL TRAINING CENTER</span>
+                                        <span class="info-box-number">{{center}}</span>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- /.col -->
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-yellow">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL CANDIDATES</span>
+                                        <span class="info-box-number">{{candidate}}</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-pink">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL ACCEPTED APPLICATION</span>
+                                        <span class="info-box-number">150</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-green">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL CANCELLED APPLICATION</span>
+                                        <span class="info-box-number">150</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-blue">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL DECLINED APPLICATION</span>
+                                        <span class="info-box-number">150</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="info-box bg-b-blue">
+                                    <span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">TOTAL TRAINING REQUEST</span>
+                                        <span class="info-box-number">{{total_rpl}}</span>
+                                        
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    <!-- end widget -->
+                    <!-- chart start -->
+
+
+                    <!-- start chat sidebar -->
+
+                    <!-- end chat sidebar -->
+                </div>
+                <!-- end page container -->
+               {% endblock %}

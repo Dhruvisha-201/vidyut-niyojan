@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Total Hired Candidate</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+            <!-- start new student list -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+                        <br>
+                      
+                        <br>
+                        <div class="card-body ">
+                            <div class="table-wrap">
+                                <div class="table-responsive">
+                                    <table class="table display product-overview
+                                        mb-30" id="support_table">
+                                        <thead>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Gender</th>
+                                                <th>Candidate Email</th>
+                                                <th>Phone no</th>
+                                                <th>Qualification</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for list in candid %}
+                                            {% for x in list %}
+                                            
+                                            <tr>
+                                                <td>{{x.Candidate_Id.FirstName}}</td>
+                                                <td>{{x.Candidate_Id.LastName}}</td>
+                                                <td>{{x.Candidate_Id.Gender}}</td>
+                                                <td>{{x.Candidate_Id.Candidate_Email}}</td>
+                                                <td>{{x.Candidate_Id.Phone_no}}</td>
+                                                <td>{{x.Candidate_Id.Qualification}}</td>
+                                                <!-- <td>{{x.Candidate_Id.Job_Add_Date}}</td>
+                                                <td>{{x.Candidate_Id.Job_Ending_Date}}</td>
+                                                 -->
+                                            </tr>
+                                          
+                                                
+                                            {% endfor %}
+                                            {% endfor %}
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

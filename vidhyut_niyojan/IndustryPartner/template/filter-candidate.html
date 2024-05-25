@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card card-box">
+                                <div class="card-head">
+                                    <header>Filter Candidate</header>
+                                </div>
+                                <div class="card-body " id="bar-parent">
+                                    <form action ="{% url 'IndustryPartner:Filter_candidate' %}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="simpleFormEmail"><b>Designation:</b></label>
+                                                    <div>
+                                                        <input name="q" style="width: 770px;   border-radius: 50px;" class="form-control" placeholder="Enter job role">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="simpleFormEmail"><b>State:</b> </label><br>
+                                                    <select id="selectstate" onchange="myFunction()" style="width: 770px;   border-radius: 50px;"  name="findstate" class="form-select">
+                                                        <option value="">Select State</option>
+                                                        {% for x in states %}
+                                                        <option  value="{{x.id}}">{{x.State_Name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6" >
+                                                    <label for="username" class="required" class="form-label"><b>District Name: </b></label><br>
+                                                    <select id="statewisecity" class="form-select" style="width: 770px;   border-radius: 50px;"  name ="findcity" >
+                                                       <option value="">Select District</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <center>
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-primary">Submit</button> 
+                                                <a href="{% url 'IndustryPartner:search_candidate' %}"><button type="button" class="btn btn-danger">Show All Candidate</button><br></a>
+                                            </div>
+                                        </center>
+                                    </form>
+                                </div>
+                            </div> 
+                            <div class="card-body" style="background-color:white; border-radius:10px;">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        <table class="table display product-overview mb-30" id="support_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>City</th>
+                                                    <th>State</th>
+                                                    <th>Course</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Gender</th>
+                                                    <th>Candidate Email</th>
+                                                    <th>Phone No</th>
+                                                    <th>Address 1</th>
+                                                    <th>Address 2</th>
+                                                    <th>Pincode</th>
+                                                    <th>Qualification</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for x in my_value %}
+                                                <tr>
+                                                    <td>{{x.City_Id.City_Name}}</td>
+                                                    <td>{{x.State_Id.State_Name}}</td>
+                                                    <td>{{x.Course_Id.CourseName}}</td>
+                                                    <td>{{x.FirstName}}</td>
+                                                    <td>{{x.LastName}}</td>
+                                                    <td>{{x.Gender}}</td>
+                                                    <td>{{x.Candidate_Email}}</td>
+                                                    <td>{{x.Phone_no}}</td>
+                                                    <td>{{x.Address1}}</td>
+                                                    <td>{{x.Address2}}</td>
+                                                    <td>{{x.pincode}}</td>
+                                                    <td>{{x.Qualification}}</td>
+                                                </tr>
+                                                {% empty %}
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>Data Not Found</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                {% endfor %}
+                                                {% for message in messages %}
+                                                {%if "nodataavilable" in message.tags %}
+                                                    <div>
+                                                        <center><h4><p style = "color:green"> {{message}} </p> </h4></center>
+                                                        <!-- <a href="#" class="del-msg">&times;</a> -->
+                                                    </div>
+                                                {%endif%}
+                                               
+                                               
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function myFunction() {
+                                    var stateinfo = document.getElementById("selectstate").value;
+                                    console.log('stateinfo', stateinfo);
+                                    output = ""
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '/ip/new_get_city_ajax/',
+                                        data: {
+                                            'stateinfo': stateinfo,
+                                            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                                        },
+                                        success: function(response) {
+                                            $("#statewisecity").empty();
+                                            console.log(response.statewisecity)
+                                            x = response.statewisecity
+                                            var select = document.getElementById('statewisecity');
+                                            var option;
+                                            for (var i = 0; i < x.length; i++) {
+                                                option = document.createElement('option');
+                                                option.text = x[i]["City_Name"];
+                                                option.id = x[i]['id']
+                                                select.add(option);
+                                            }
+                                        },
+                                    });
+                                }
+                            </script>
+                            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       {% endblock %}
